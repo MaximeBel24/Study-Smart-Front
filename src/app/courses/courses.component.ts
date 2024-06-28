@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from '../model/course.model';
+import { CourseService } from '../services/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit{
 
-  courses : string[];
+  courses? : Course[];
 
-  constructor() {
-    this.courses = ["Cours Java", "Cours Angular", "Cours Flutter"]
+  constructor(private courseService : CourseService) {
+    
   }
 
   ngOnInit(): void {
-      
+      this.courses = this.courseService.listCourses();
   }
+
+  deleteCourse(c: Course){
+    let conf = confirm("Etes-vous sûr ?")
+    if(conf)
+      this.courseService.deleteCourse(c);
+  }
+  
 }
