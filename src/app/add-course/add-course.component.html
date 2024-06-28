@@ -34,6 +34,14 @@
             <label for="">Niveau du Cours</label>
             <input type="text" [(ngModel)]="newCourse.level" name="level" class="form-control">
         </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label>Catégorie</label>
+            <select name="idCat" id="idCat" class="form-control form-control-lg" [(ngModel)]="newIdCat">
+                <option *ngFor="let cat of categories" [value]="cat.id">
+                    {{cat.name}}
+                </option>
+            </select>
+        </div>
         <div class="mt-2">
             <button type="submit" (click)="addCourse()" class="btn btn-success">Ajouter le Cours</button>
         </div>
