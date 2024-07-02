@@ -16,13 +16,28 @@ export class CoursesComponent implements OnInit{
   }
 
   ngOnInit(): void {
-      this.courses = this.courseService.listCourses();
+    this.courseService.listCourses().subscribe(cours => {
+      console.log(cours);
+      this.courses = cours ;
+    })
+
+    this.loadCourses();
   }
+
+  loadCourses() {
+    this.courseService.listCourses().subscribe(crs => {
+      console.log(crs)
+      this.courses = crs;
+    })
+  } 
 
   deleteCourse(c: Course){
     let conf = confirm("Etes-vous sûr ?")
     if(conf)
-      this.courseService.deleteCourse(c);
+      this.courseService.deleteCourse(c.id).subscribe(() => {
+        console.log("Cours supprimé");
+        this.loadCourses();
+    });
   }
   
 }

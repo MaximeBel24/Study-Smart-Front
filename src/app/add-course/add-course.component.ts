@@ -23,14 +23,19 @@ export class AddCourseComponent implements OnInit{
   ) { }
   
   ngOnInit(): void {
-    this.categories = this.courseService.listCategories();
+    this.courseService.listCategories().subscribe(cats => 
+      {this.categories = cats;
+        console.log(cats);
+      })
    }
 
   addCourse(){
-    this.newCategory = this.courseService.consultCategory(this.newIdCat);
-    this.newCourse.category = this.newCategory;
-    this.courseService.addCourse(this.newCourse);
-    this.router.navigate(['cours'])
+    this.newCourse.category = this.categories.find(cat => cat.id == this.newIdCat)!;
+    this.courseService.addCourse(this.newCourse)
+    .subscribe(course => {
+      console.log(course);
+      this.router.navigate(['cours'])
+    })
   }
 
 }

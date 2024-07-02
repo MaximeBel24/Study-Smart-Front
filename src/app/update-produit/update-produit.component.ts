@@ -22,16 +22,22 @@ export class UpdateProduitComponent implements OnInit{
     private courseService: CourseService
   ) { }
 
-  ngOnInit(): void {
-    this.categories = this.courseService.listCategories();
-    this.currentCourse = this.courseService.showCourse(this.activatedRoute.snapshot.params['id']);
-    this.updatedCatId = this.currentCourse.category.id;
+  ngOnInit(){
+    this.courseService.listCategories().subscribe(cats => {
+      this.categories = cats;
+      console.log(cats);
+    })
+    this.courseService.consultCourse(this.activatedRoute.snapshot.params['id']).subscribe( crs => {
+      this.currentCourse = crs; 
+      this.updatedCatId = this.currentCourse.category.id;
+    })
   }
 
   updateCourse() {
-    this.currentCourse.category = this.courseService.consultCategory(this.updatedCatId)
-    this.courseService.updateCourse(this.currentCourse);
-    this.router.navigate(['cours'])
+    this.currentCourse.category = this.categories.find(cat => cat.id == this.updatedCatId)!;
+    this.courseService.updateCourse(this.currentCourse).subscribe(course => {
+      this.router.navigate(['produits']);
+    })
   }
 
 }
