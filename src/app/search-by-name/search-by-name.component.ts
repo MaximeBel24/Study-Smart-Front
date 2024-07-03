@@ -11,8 +11,6 @@ import { Category } from '../model/category.model';
 export class SearchByNameComponent implements OnInit{
 
   courses! : Course[];
-  IdCategory! : number;
-  categories! : Category[];
   titleCourse! : string;
   searchTerm! : string;
   allCourses! : Course[];
@@ -23,13 +21,9 @@ export class SearchByNameComponent implements OnInit{
 
   ngOnInit(): void {
     this.courseService.listCourses().subscribe(crs => {
-      console.log(crs)
-      this.allCourses = crs
+      // console.log(crs)
+      this.courses = crs
     })
-  }
-
-  onKeyUp(filterText : string){
-    this.courses = this.allCourses.filter(item => item.title.toLowerCase().includes(filterText))
   }
 
   searchCourses(){
@@ -37,5 +31,11 @@ export class SearchByNameComponent implements OnInit{
       this.courses = crs;
       // console.log(crs);
     })
+  }
+
+  onKeyUp(filterText : string){
+    this.courses = this.allCourses.filter(
+      item => item.title.toLowerCase().includes(filterText)
+    )
   }
 }

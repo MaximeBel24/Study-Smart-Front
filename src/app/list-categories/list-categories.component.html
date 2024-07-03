@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+                <app-update-category 
+                    [category]="updatedCat"
+                    (categoryUpdated)="categoryUpdated($event)"
+                    [add]="add">
+                </app-update-category>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom de la Catégorie</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cat of categories">
+                        <td>{{cat.id}}</td>
+                        <td>{{cat.name}}</td>
+                        <td>{{cat.description}}</td>
+                        <td><a (click)="updateCat(cat)" class="btn btn-success">Editer</a></td>
+                        <td><a (click)="deleteCategory(cat)" class="btn btn-danger">Supprimer</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

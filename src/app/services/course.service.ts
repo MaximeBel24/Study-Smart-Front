@@ -13,8 +13,8 @@ const httpOptions = {
 })
 export class CourseService {
 
-  apiURL: string = 'http://localhost:8080/courses/api';
-  apiURLCat: string = 'http://localhost:8080/courses/cat'
+  apiURL: string = 'http://localhost:8082/courses/api';
+  apiURLCat: string = 'http://localhost:8082/courses/cat'
 
   course! : Course;
 
@@ -41,19 +41,6 @@ export class CourseService {
     return this.http.get<Course>(url)
   }
 
-  //   sortCourses(){
-  //   this.courses = this.courses.sort((n1,n2) => {
-  //     if(n1.id! > n2.id!) {
-  //       return 1;
-  //     }
-
-  //     if(n1.id! < n2.id!) {
-  //       return -1;
-  //     }
-
-  //     return 0;
-  //   })
-  // }
 
   updateCourse(course : Course) : Observable<Course>{
     return this.http.put<Course>(this.apiURL, course, httpOptions);
@@ -63,10 +50,6 @@ export class CourseService {
     return this.http.get<CategoryWrapper>(this.apiURLCat);
   }
 
-  // consultCategory(id : number): Category {
-  //   return this.categories.find(cat => cat.id == id)!;
-  // }
-
   searchByCategorie(idCat : number): Observable<Course[]> {
     const url = `${this.apiURL}/prodscat/${idCat}`;
     return this.http.get<Course[]>(url);
@@ -75,6 +58,15 @@ export class CourseService {
   searchByTitle(title : string) : Observable<Course[]> {
     const url = `${this.apiURL}/coursesByTitle/${title}`;
     return this.http.get<Course[]>(url);
+  }
+
+  addCategory(cat : Category) : Observable<Category> {
+    return this.http.post<Category>(this.apiURLCat, cat, httpOptions)
+  }
+
+  deleteCategory(id : number) {
+    const url = `${this.apiURLCat}/${id}`
+    return this.http.delete(url, httpOptions)
   }
 
 }

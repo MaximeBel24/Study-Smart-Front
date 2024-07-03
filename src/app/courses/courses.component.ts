@@ -17,7 +17,7 @@ export class CoursesComponent implements OnInit{
 
   ngOnInit(): void {
     this.courseService.listCourses().subscribe(cours => {
-      console.log(cours);
+      // console.log(cours);
       this.courses = cours ;
     })
 
@@ -26,7 +26,7 @@ export class CoursesComponent implements OnInit{
 
   loadCourses() {
     this.courseService.listCourses().subscribe(crs => {
-      console.log(crs)
+      // console.log(crs)
       this.courses = crs;
     })
   } 
@@ -35,7 +35,7 @@ export class CoursesComponent implements OnInit{
     let conf = confirm("Etes-vous sûr ?")
     if(conf)
       this.courseService.deleteCourse(c.id).subscribe(() => {
-        console.log("Cours supprimé");
+        // console.log("Cours supprimé");
         this.loadCourses();
     });
   }

@@ -21,7 +21,7 @@ export class SearchByCategoryComponent implements OnInit{
   ngOnInit(): void {
     this.courseService.listCategories().subscribe(cats => {
       this.categories = cats._embedded.categories;
-      console.log(cats);
+      // console.log(cats);
     })
   }
 

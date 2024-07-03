@@ -1,12 +1,31 @@
 <div class="container">
+
     <form class="form-inline">
         <div class="form-group mx-sm-3 mb-2 mt-2">
-            <label for="">Nom du Cours en tapant</label>
-            <!-- <input #searchTerm (keyup)="onKeyUp(searchTerm.value)" type="text" class="form-control" [(ngModel)]="titleCourse" name="titleCourse"> -->
-            <input #nom [(ngModel)]="searchTerm"  name="searchTerm" class="form-control" >
-            <button class="btn btn-primary mb-2 ml-2" type="submit" (click)="searchCourses()">Rechercher</button>
+            <label>Nom Cours en tapant</label>
+            <input type="text" #title [(ngModel)]="searchTerm" name="searchTerm" class="form-control">
         </div>
     </form>
+
+    <!--<form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label>Nom cours en tapant</label>
+            <input type="text" class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+        </div>
+    </form>-->
+
+
+
+    <!--<form class="form-inline">
+        <div class="form-group mx-sm-3 mb-2 mt-2">
+            <label for="">Nom du Cours en tapant</label>
+            <input #searchTerm (keyup)="onKeyUp(searchTerm.value)" type="text" class="form-control" [(ngModel)]="titleCourse" name="titleCourse">
+            <input #nom [(ngModel)]="searchTerm"  name="searchTerm" class="form-control">
+            <button class="btn btn-primary mb-2 ml-2" type="submit" (click)="searchCourses()">Rechercher</button>
+        </div>
+    </form>-->
+
+    
     <div class="card shadow mb-4">
         <div class="card-body">
             <table class="table table-striped">

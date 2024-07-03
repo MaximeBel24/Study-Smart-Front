@@ -25,7 +25,7 @@ export class AddCourseComponent implements OnInit{
   ngOnInit(): void {
     this.courseService.listCategories().subscribe(cats => 
       {this.categories = cats._embedded.categories;
-        console.log(cats);
+        // console.log(cats);
       })
    }
 
@@ -33,7 +33,7 @@ export class AddCourseComponent implements OnInit{
     this.newCourse.category = this.categories.find(cat => cat.id == this.newIdCat)!;
     this.courseService.addCourse(this.newCourse)
     .subscribe(course => {
-      console.log(course)
+      // console.log(course)
       this.router.navigate(['cours'])
     })
   }
