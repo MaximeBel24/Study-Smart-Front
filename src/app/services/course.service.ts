@@ -3,6 +3,7 @@ import { Course } from '../model/course.model';
 import { Category } from '../model/category.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CategoryWrapper } from '../model/category-wrapped.model';
 const httpOptions = {
   headers: new HttpHeaders( {'Content-Type': 'application/json'} )
 };
@@ -13,25 +14,12 @@ const httpOptions = {
 export class CourseService {
 
   apiURL: string = 'http://localhost:8080/courses/api';
+  apiURLCat: string = 'http://localhost:8080/courses/cat'
 
-  // courses : Course[];
   course! : Course;
-  // categories : Category[];
 
   constructor(private http : HttpClient) { 
 
-    // this.categories = [
-    //   {id : 1, name : "Programmation", description : "Les meilleurs cours pour devenir un codeur talentueux"},
-    //   {id : 2, name : "Finance", description : "Les meilleurs cours pour devenir un as de la finance"}
-    // ]
-
-    // this.courses = [
-    //   {id: 1, title: "Cours Java", description : "Cours pour apprendre les bases en Java", image: "test", price: 19.99, duration: 30, level: "Débutant", category : {id : 1, name : "Programmation", description : "Les meilleurs cours pour devenir un codeur talentueux"}},
-    //   {id: 2, title: "Cours Angular", description : "Cours pour apprendre les bases en Java", image: "test", price: 24.99, duration: 40, level: "Débutant", category : {id : 1, name : "Programmation", description : "Les meilleurs cours pour devenir un codeur talentueux"}},
-    //   {id: 3, title: "Cours Flutter", description : "Cours pour apprendre les bases en Java", image: "test", price: 29.99, duration: 35, level: "Débutant", category : {id : 1, name : "Programmation", description : "Les meilleurs cours pour devenir un codeur talentueux"}},
-    //   {id: 4, title: "Cours sur la Bourse", description : "Cours pour apprendre les bases en bourse", image: "test", price: 19.99, duration: 45, level: "Débutant", category : {id : 2, name : "Finance", description : "Les meilleurs cours pour devenir un as de la finance"}}
-
-    // ]
   }
 
   listCourses(): Observable<Course[]> {
@@ -71,12 +59,22 @@ export class CourseService {
     return this.http.put<Course>(this.apiURL, course, httpOptions);
   }
 
-  listCategories():Observable<Category[]> {
-    return this.http.get<Category[]>(this.apiURL+"/cat");
+  listCategories():Observable<CategoryWrapper> {
+    return this.http.get<CategoryWrapper>(this.apiURLCat);
   }
 
   // consultCategory(id : number): Category {
   //   return this.categories.find(cat => cat.id == id)!;
   // }
+
+  searchByCategorie(idCat : number): Observable<Course[]> {
+    const url = `${this.apiURL}/prodscat/${idCat}`;
+    return this.http.get<Course[]>(url);
+  }
+
+  searchByTitle(title : string) : Observable<Course[]> {
+    const url = `${this.apiURL}/coursesByTitle/${title}`;
+    return this.http.get<Course[]>(url);
+  }
 
 }
