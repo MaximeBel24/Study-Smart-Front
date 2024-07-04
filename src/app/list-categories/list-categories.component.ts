@@ -13,7 +13,7 @@ export class ListCategoriesComponent implements OnInit{
 
   add : boolean = true;
 
-  updatedCat : Category = {"id" : 0, "name" : "test", "description" : "test"}
+  updatedCat : Category = {"id" : 0, "name" : "", "description" : ""}
 
   constructor(private courseService : CourseService) {}
 
@@ -22,8 +22,6 @@ export class ListCategoriesComponent implements OnInit{
       this.categories = cats._embedded.categories
     })
   }
-
-
 
   loadCategories() {
     this.courseService.listCategories().subscribe(cats => {

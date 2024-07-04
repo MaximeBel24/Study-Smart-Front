@@ -6,14 +6,19 @@ import { UpdateProduitComponent } from './update-produit/update-produit.componen
 import { SearchByCategoryComponent } from './search-by-category/search-by-category.component';
 import { SearchByNameComponent } from './search-by-name/search-by-name.component';
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
+import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { courseGuard } from './course.guard';
 
 const routes: Routes = [
   {path: "cours", component : CoursesComponent},
-  {path: "ajouter-cours", component: AddCourseComponent},
+  {path: "ajouter-cours", component: AddCourseComponent, canActivate:[courseGuard]},
   {path: "modifier-cours/:id", component: UpdateProduitComponent},
   {path: "rechercherParCategorie", component: SearchByCategoryComponent},
   {path: "listeCategories", component: ListCategoriesComponent},
   {path: "rechercherParNom", component: SearchByNameComponent},
+  {path: "connexion", component: LoginComponent},
+  {path: "interdit", component: ForbiddenComponent},
   {path: "", redirectTo: "cours", pathMatch: "full"}
 ];
 
