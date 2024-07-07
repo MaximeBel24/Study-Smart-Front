@@ -15,13 +15,15 @@ export class AuthService {
   token! : string;
 
   users: User[] = [
-    { username: 'admin', password: '123', roles: ['ADMIN'] },
-    { username: 'maxime', password: '123', roles: ['USER'] },
+    { username: 'admin', password: '123', roles: ['ADMIN'], email :"maxime@gmail.com", enabled : true },
+    { username: 'maxime', password: '123', roles: ['USER'], email :"maxime@gmail.com", enabled : true },
   ];
 
   public loggedUser!: string;
   public isloggedIn: Boolean = false;
   public roles!: string[];
+
+  public registredUser : User =new User();
 
   constructor(
     private router: Router, 
@@ -58,6 +60,10 @@ export class AuthService {
   isTokenExpired() : Boolean
   {
     return this.helper.isTokenExpired(this.token);
+  }
+
+  registerUser(user: User){
+    return this.http.post<User>(this.apiUrl+'/register', user, {observe: 'response'});
   }
 
   logout() {
@@ -107,5 +113,17 @@ export class AuthService {
     this.loggedUser = login;
     this.isloggedIn = true;
     this.getUserRoles(login)
+  }
+
+  setRegistredUser(user: User){
+    this.registredUser = user;
+  }
+
+  getRegistredUser(){
+    return this.registredUser
+  }
+
+  validateEmail(code : string){
+    return this.http.get<User>(this.apiUrl+'/verifyEmail/'+code);
   }
 }

@@ -9,6 +9,8 @@ import { ListCategoriesComponent } from './list-categories/list-categories.compo
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { courseGuard } from './course.guard';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 
 const routes: Routes = [
   {path: "cours", component : CoursesComponent},
@@ -18,7 +20,9 @@ const routes: Routes = [
   {path: "listeCategories", component: ListCategoriesComponent},
   {path: "rechercherParNom", component: SearchByNameComponent},
   {path: "connexion", component: LoginComponent},
+  {path: "inscription", component: RegisterComponent},
   {path: "interdit", component: ForbiddenComponent},
+  {path: "verifEmail", component: VerifEmailComponent},
   {path: "", redirectTo: "cours", pathMatch: "full"}
 ];
 

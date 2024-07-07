@@ -88,5 +88,4 @@ export class CourseService {
     const url = `${this.apiURLCat}/${id}`
     return this.http.delete(url, httpOptions)
   }
-
 }
