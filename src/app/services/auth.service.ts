@@ -1,11 +1,19 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user.model';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+  private helper = new JwtHelperService();
+
+  apiUrl : string = "http://localhost:8081/users"
+  token! : string;
+
   users: User[] = [
     { username: 'admin', password: '123', roles: ['ADMIN'] },
     { username: 'maxime', password: '123', roles: ['USER'] },
@@ -15,14 +23,50 @@ export class AuthService {
   public isloggedIn: Boolean = false;
   public roles!: string[];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router, 
+    private http : HttpClient
+  ) {}
+
+  login(user: User) {
+    return this.http.post<User>(this.apiUrl+'/login', user, {observe:'response'});
+  }
+
+  saveToken(jwt : string){
+    localStorage.setItem('jwt',jwt);
+    this.token = jwt;
+    this.isloggedIn = true;
+  }
+
+  decodeJWT() {
+    if (this.token == undefined)
+      return;
+    const decodeToken = this.helper.decodeToken(this.token);
+    this.roles = decodeToken.roles;
+    this.loggedUser = decodeToken.sub;
+  }
+
+  loadToken() {
+    this.token = localStorage.getItem('jwt')!;
+    this.decodeJWT();
+  }
+
+  getToken():string {
+    return this.token;
+  }
+
+  isTokenExpired() : Boolean
+  {
+    return this.helper.isTokenExpired(this.token);
+  }
 
   logout() {
-    this.isloggedIn = false;
     this.loggedUser = undefined!;
     this.roles = undefined!;
-    localStorage.removeItem('loggedUser');
-    localStorage.setItem('isloggedIn', String(this.isloggedIn));
+    this.token = undefined!;
+    this.isloggedIn = false;
+    localStorage.removeItem('jwt');
+    // localStorage.setItem('isloggedIn', String(this.isloggedIn));
     this.router.navigate(['/login']);
   }
 
@@ -46,8 +90,9 @@ export class AuthService {
   }
 
   isAdmin(): Boolean {
-    if (!this.roles) return false;
-    return this.roles.indexOf('ADMIN') > -1;
+    if (!this.roles) 
+        return false;
+    return this.roles.indexOf('ADMIN') > 0;
   }
 
   getUserRoles(username : string){

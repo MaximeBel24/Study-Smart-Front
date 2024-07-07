@@ -4,6 +4,8 @@ import { Category } from '../model/category.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CategoryWrapper } from '../model/category-wrapped.model';
+import { AuthService } from './auth.service';
+
 const httpOptions = {
   headers: new HttpHeaders( {'Content-Type': 'application/json'} )
 };
@@ -18,36 +20,54 @@ export class CourseService {
 
   course! : Course;
 
-  constructor(private http : HttpClient) { 
+  constructor(private http : HttpClient, private authService : AuthService) { 
 
   }
 
   listCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>(this.apiURL);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<Course[]>(this.apiURL+"/all",{headers:httpHeaders});
 
   }
 
   addCourse(course: Course): Observable<Course> {
-    return this.http.post<Course>(this.apiURL, course, httpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.post<Course>(this.apiURL+"/addcourse", course, {headers: httpHeaders});
   }
 
   deleteCourse(id : number){
-    const url = `${this.apiURL}/${id}`;
-    return this.http.delete(url, httpOptions);
+    const url = `${this.apiURL}/delcourse${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.delete(url, {headers: httpHeaders});
   }
 
   consultCourse(id: number): Observable<Course> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.get<Course>(url)
+    const url = `${this.apiURL}/getbyid/${id}`;
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<Course>(url,{headers:httpHeaders});
   }
 
 
   updateCourse(course : Course) : Observable<Course>{
-    return this.http.put<Course>(this.apiURL, course, httpOptions);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.put<Course>(this.apiURL+"/updatecourse", course, {headers:httpHeaders});
   }
 
   listCategories():Observable<CategoryWrapper> {
-    return this.http.get<CategoryWrapper>(this.apiURLCat);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer " + jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<CategoryWrapper>(this.apiURLCat,{headers: httpHeaders});
   }
 
   searchByCategorie(idCat : number): Observable<Course[]> {
