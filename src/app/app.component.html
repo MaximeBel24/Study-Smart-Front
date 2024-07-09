@@ -12,10 +12,10 @@
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Cours</a>
       <div class="dropdown-menu">
         <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="ajouter-cours">Ajouter</a>
-        <a class="dropdown-item" href="#">Lister</a>
+        <a class="dropdown-item" routerLink="cours">Lister</a>
         <a class="dropdown-item" routerLink="rechercherParCategorie">Rechercher par Categorie</a>
         <a class="dropdown-item" routerLink="rechercherParNom">Rechercher par Nom</a>
-        <a class="dropdown-item" routerLink="listeCategories">Gestion des Catégories</a>
+        <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="listeCategories">Gestion des Catégories</a>
       </div>
     </li>
   </ul>
@@ -25,9 +25,10 @@
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">[username]</a>
       <div class="dropdown-menu">
-        <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="connexion">Se connecter</a>
-        <a *ngIf="authService.isloggedIn" class="dropdown-item" (click)="onLogout()">logout</a>
-        <a class="dropdown-item" href="#">Profile</a>
+        <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="login">Se connecter</a>
+        <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="register">S'inscrire</a>
+        <a *ngIf="authService.isloggedIn" class="dropdown-item" (click)="onLogout()">Se déconnecter</a>
+        <a *ngIf="authService.isloggedIn" class="dropdown-item" href="#">Profile</a>
       </div>
     </li>
   </ul>

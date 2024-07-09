@@ -19,8 +19,8 @@ const routes: Routes = [
   {path: "rechercherParCategorie", component: SearchByCategoryComponent},
   {path: "listeCategories", component: ListCategoriesComponent},
   {path: "rechercherParNom", component: SearchByNameComponent},
-  {path: "connexion", component: LoginComponent},
-  {path: "inscription", component: RegisterComponent},
+  {path: "login", component: LoginComponent},
+  {path: "register", component: RegisterComponent},
   {path: "interdit", component: ForbiddenComponent},
   {path: "verifEmail", component: VerifEmailComponent},
   {path: "", redirectTo: "cours", pathMatch: "full"}

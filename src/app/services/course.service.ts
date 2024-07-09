@@ -15,8 +15,8 @@ const httpOptions = {
 })
 export class CourseService {
 
-  apiURL: string = 'http://localhost:8080/courses/api';
-  apiURLCat: string = 'http://localhost:8080/courses/cat'
+  apiURL: string = 'http://localhost:8082/courses/api';
+  apiURLCat: string = 'http://localhost:8082/courses/cat'
 
   course! : Course;
 

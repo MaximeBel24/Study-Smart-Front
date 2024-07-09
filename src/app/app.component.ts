@@ -10,13 +10,16 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'study-smart';
 
-  constructor(public authService : AuthService, private router : Router) {}
+  constructor(
+    public authService : AuthService, 
+    private router : Router
+  ) {}
 
   ngOnInit(): void {
     this.authService.loadToken();
       if(this.authService.getToken()==null ||
           this.authService.isTokenExpired())
-          this.router.navigate(['/login']);
+            this.router.navigate(['/login']);
   }
 
   onLogout() {

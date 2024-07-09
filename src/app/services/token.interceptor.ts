@@ -8,29 +8,29 @@ export class TokenInterceptor implements HttpInterceptor {
 
     constructor(private authService: AuthService) {}
 
-    exclude_array : string[] = ['/connexion', '/inscription', '/verifyEmail'];
+    exclude_array : string[] = ['/login', '/register', '/verifyEmail'];
 
-    toExclude(url : string){
-        var length = this.exclude_array.length;
-        for(var i = 0; i < length; i++){
-            if(url.search(this.exclude_array[i]) != -1)
-                return true;
-        }
-        return false;
-    }
+    // toExclude(url : string){
+    //     var length = this.exclude_array.length;
+    //     for(var i = 0; i < length; i++){
+    //         if(url.search(this.exclude_array[i]) != -1)
+    //             return true;
+    //     }
+    //     return false;
+    // }
 
-    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         
         const toExclude = "/login"
-        //tester s'il s'agit d elogin , on ajoute pas le header Authorization puisqu'on a
+        //tester s'il s'agit de login , on ajoute pas le header Authorization puisqu'on a
         //pas encore de JWT (il est null)
-        if(req.url.search(toExclude) === -1){
+        if(request.url.search(toExclude) === -1){
             let jwt = this.authService.getToken();
-            let reqWithToken = req.clone( {
+            let reqWithToken = request.clone( {
                 setHeaders: { Authorization : "Bearer " + jwt}
             })
             return next.handle(reqWithToken);
         }
-        return next.handle(req);
+        return next.handle(request);
     }
 }

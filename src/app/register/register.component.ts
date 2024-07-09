@@ -36,7 +36,9 @@ export class RegisterComponent implements OnInit{
   }
 
   onRegister(){
+    this.loading = true;
     this.authService.registerUser(this.user).subscribe({
+      
       next:(res)=>{
         this.authService.setRegistredUser(this.user);
         this.toastr.success("veuillez confirmer votre email", "Confirmation");
