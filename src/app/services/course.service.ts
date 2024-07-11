@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course.model';
+import { Image } from '../model/image.model'
 import { Category } from '../model/category.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -87,5 +88,36 @@ export class CourseService {
   deleteCategory(id : number) {
     const url = `${this.apiURLCat}/${id}`
     return this.http.delete(url, httpOptions)
+  }
+
+  uploadImage(file: File, filename: string): Observable<Image>{
+    const imageFormData = new FormData();
+    imageFormData.append('image', file, filename);
+    const url = `${this.apiURL + '/image/upload'}`
+    return this.http.post<Image>(url, imageFormData);
+  }
+
+  loadImage(id: number): Observable<Image> {
+    const url = `${this.apiURL + '/image/get/info'}/${id}`;
+    return this.http.get<Image>(url);
+  }
+
+  uploadImageCourse(file: File, filename: string, idCourse: number): Observable<any>{
+    const imageFormData = new FormData();
+    imageFormData.append('image', file, filename);
+    const url = `${this.apiURL + '/image/uploadImageCourse'}/${idCourse}`;
+    return this.http.post(url, imageFormData);
+  }
+
+  deleteImage(id: number) {
+    const url = `${this.apiURL}/image/delete/${id}`;
+    return this.http.delete(url, httpOptions);
+  }
+
+  uploadImageFS(file: File, filename: string, idCourse: number): Observable<any>{
+    const imageFormData = new FormData();
+    imageFormData.append('image', file, filename);
+    const url = `${this.apiURL + '/image/uploadFS'}/${idCourse}`;
+    return this.http.post(url, imageFormData);
   }
 }

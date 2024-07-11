@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course.model';
+import { Image } from '../model/image.model';
 import { CourseService } from '../services/course.service';
 import { Router } from '@angular/router';
 import { Category } from '../model/category.model';
+import { response } from 'express';
 
 @Component({
   selector: 'app-add-course',
@@ -16,6 +18,9 @@ export class AddCourseComponent implements OnInit{
 
   newIdCat! : number;
   newCategory! : Category;
+
+  uploadedImage!: File;
+  imagePath: any;
 
   constructor(
     private courseService : CourseService,
@@ -31,11 +36,19 @@ export class AddCourseComponent implements OnInit{
 
   addCourse(){
     this.newCourse.category = this.categories.find(cat => cat.id == this.newIdCat)!;
-    this.courseService.addCourse(this.newCourse)
-    .subscribe(course => {
-      // console.log(course)
-      this.router.navigate(['cours'])
+    this.courseService.addCourse(this.newCourse).subscribe((course) => {
+      this.courseService.uploadImageFS(this.uploadedImage, this.uploadedImage.name, course.id).subscribe((response : any) => {});
+
+      this.router.navigate(['cours']);
     })
+  }
+
+  onImageUpload(event: any) {
+    this.uploadedImage = event.target.files[0];
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.uploadedImage);
+    reader.onload = (_event) => {this.imagePath = reader.result}
   }
 
 }

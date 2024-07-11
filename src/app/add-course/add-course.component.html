@@ -16,11 +16,6 @@
             <label for="">Description du Cours</label>
             <input type="text" [(ngModel)]="newCourse.description" name="description" class="form-control">
         </div>
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-            <label for="">Image du Cours</label>
-            <input type="file" [(ngModel)]="newCourse.image" name="image" class="form-control">
-        </div>
         <div class="col-sm-2 col-md-2 col-lg-2">
             <label for="">Prix du Cours</label>
             <input type="number" [(ngModel)]="newCourse.price" name="price" class="form-control">
@@ -41,6 +36,13 @@
                     {{cat.name}}
                 </option>
             </select>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <label for="">Image du Cours</label>
+            <input type="file" [(ngModel)]="newCourse.image" name="image" class="form-control" (change)="onImageUpload($event)">
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <img [src]="imagePath" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px">
         </div>
         <div class="mt-2">
             <button type="submit" (click)="addCourse()" class="btn btn-success">Ajouter le Cours</button>

@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoursesComponent } from './courses/courses.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UpdateProduitComponent } from './update-produit/update-produit.component';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { UpdateProduitComponent } from './update-course/update-produit.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SearchByCategoryComponent } from './search-by-category/search-by-category.component';
 import { SearchByNameComponent } from './search-by-name/search-by-name.component';
 import { SearchFilterPipe } from './search-filter.pipe';
@@ -35,7 +38,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginComponent,
     ForbiddenComponent,
     RegisterComponent,
-    VerifEmailComponent
+    VerifEmailComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,11 +53,11 @@ import { ToastrModule } from 'ngx-toastr';
   providers: [
     provideClientHydration(),
     {
-      provide : HTTP_INTERCEPTORS,
-      useClass : TokenInterceptor,
-      multi : true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

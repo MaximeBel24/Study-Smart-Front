@@ -19,11 +19,11 @@
                         <td>{{course.id}}</td>
                         <td>{{course.title}}</td>
                         <td>{{course.description}}</td>
-                        <td>{{course.image}}</td>
+                        <td><img src="{{apiurl + '/image/loadfromFS/' + course.id}}" style="height: 50px; width: 100px" class="card-img-top card-responsive"></td>
                         <td>{{course.price}} €</td>
                         <td>{{course.duration}}h</td>
                         <td>{{course.level}}</td>
-                        <td>{{course.category.name}}</td>
+                        <td>{{course.category?.name}}</td>
                         <td><a *ngIf="authService.isAdmin()" class="btn-sm btn-info" [routerLink]="['/modifier-cours', course.id]">Modifier</a></td>
                         <td><a *ngIf="authService.isAdmin()" class="btn-sm btn-danger" (click)="deleteCourse(course)">Supprimer</a></td>
                     </tr>

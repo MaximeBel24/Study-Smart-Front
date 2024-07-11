@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from '../model/course.model';
 import { CourseService } from '../services/course.service';
 import { AuthService } from '../services/auth.service';
+import { Image } from '../model/image.model';
 
 @Component({
   selector: 'app-courses',
@@ -9,7 +10,10 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './courses.component.css',
 })
 export class CoursesComponent implements OnInit {
-  courses?: Course[];
+
+  courses?: Course[]; // un tableau de cours
+
+  apiurl : string = 'http://localhost:8080/courses/api';
 
   constructor(
     private courseService: CourseService,
@@ -25,11 +29,24 @@ export class CoursesComponent implements OnInit {
     this.loadCourses();
   }
 
+  // loadCourses() {
+  //   this.courseService.listCourses().subscribe((crs) => {
+  //     // console.log(crs)
+  //     this.courses = crs;
+
+  //     this.courses.forEach((crs) => {
+  //       crs.imageStr = 'data:' 
+  //       + crs.images[0].type 
+  //       + ';base64,' 
+  //       + crs.images[0].image;
+  //     });
+  //   });
+  // }
+
   loadCourses() {
-    this.courseService.listCourses().subscribe((crs) => {
-      // console.log(crs)
+    this.courseService.listCourses().subscribe(crs => {
       this.courses = crs;
-    });
+    })
   }
 
   deleteCourse(c: Course) {
