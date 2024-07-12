@@ -12,21 +12,21 @@ import { environment } from '../../environments/environment';
 })
 export class AuthService {
 
-private helper = new JwtHelperService();
+  private helper = new JwtHelperService();
 
-apiURL: string = environment.USER_API_URL;
-token!:string;
+  apiURL: string = environment.USER_API_URL;
+  token!:string;
 
-public loggedUser!:string;
-public isloggedIn: Boolean = false;
-public roles!:string[];
+  public loggedUser!:string;
+  public isloggedIn: Boolean = false;
+  public roles!:string[];
 
-public registredUser : User = new User();
+  public registredUser : User = new User();
 
-constructor(
-  private router : Router,
-  private http : HttpClient
-) { }
+  constructor(
+    private router : Router,
+    private http : HttpClient
+  ) { }
 
   setRegistredUser(user : User) {
     this.registredUser=user;
@@ -112,7 +112,7 @@ constructor(
     return this.http.post<User>(this.apiURL+'/register', user, {observe:'response'});
   }
 
-  validateEmail(code : string){
+  validateEmail(code : number){
     return this.http.get<User>(this.apiURL+'/verifyEmail/'+code);
   }
     
