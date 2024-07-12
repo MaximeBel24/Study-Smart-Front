@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CategoryWrapper } from '../model/category-wrapped.model';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders( {'Content-Type': 'application/json'} )
@@ -16,8 +17,8 @@ const httpOptions = {
 })
 export class CourseService {
 
-  apiURL: string = 'http://localhost:8082/courses/api';
-  apiURLCat: string = 'http://localhost:8082/courses/cat'
+  apiURL: string = environment.STUDY_SMART_API_URL;
+  apiURLCat: string = environment.STUDY_SMART_CATEGORY_API_URL;
 
   course! : Course;
 

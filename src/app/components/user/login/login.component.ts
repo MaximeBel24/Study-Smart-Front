@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../model/user.model';
-import { AuthService } from '../services/auth.service';
+import { User } from '../../../model/user.model';
+import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
   user = new User();
   err:number = 0;
-  message : string = "login ou mot de passe erronés..."
+  message : string = "Login ou mot de passe erronés..."
 
   constructor(private authService: AuthService, private router: Router) {}
 

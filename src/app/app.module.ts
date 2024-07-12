@@ -6,39 +6,51 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesComponent } from './courses/courses.component';
-import { AddCourseComponent } from './add-course/add-course.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UpdateProduitComponent } from './update-course/update-produit.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { SearchByCategoryComponent } from './search-by-category/search-by-category.component';
-import { SearchByNameComponent } from './search-by-name/search-by-name.component';
-import { SearchFilterPipe } from './search-filter.pipe';
-import { ListCategoriesComponent } from './list-categories/list-categories.component';
-import { UpdateCategoryComponent } from './update-category/update-category.component';
-import { LoginComponent } from './login/login.component';
-import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { RegisterComponent } from './register/register.component';
+import { SearchFilterPipe } from './pipe/search-filter.pipe';
 import { TokenInterceptor } from './services/token.interceptor';
-import { VerifEmailComponent } from './verif-email/verif-email.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { CoursesComponent } from './components/course/courses/courses.component';
+import { AddCourseComponent } from './components/course/add-course/add-course.component';
+import { UpdateProduitComponent } from './components/course/update-course/update-produit.component';
+import { ListCategoriesComponent } from './components/category/list-categories/list-categories.component';
+import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
+import { SearchByCategoryComponent } from './components/search/search-by-category/search-by-category.component';
+import { SearchByNameComponent } from './components/search/search-by-name/search-by-name.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { VerifEmailComponent } from './components/user/verif-email/verif-email.component';
+import { ForbiddenComponent } from './components/utils/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+
+    // Category
+    ListCategoriesComponent,
+    UpdateCategoryComponent,
+
+    // Courses
     CoursesComponent,
     AddCourseComponent,
     UpdateProduitComponent,
+
+    //Search
     SearchByCategoryComponent,
     SearchByNameComponent,
-    SearchFilterPipe,
-    ListCategoriesComponent,
-    UpdateCategoryComponent,
+
+    // User
     LoginComponent,
-    ForbiddenComponent,
     RegisterComponent,
     VerifEmailComponent,
+
+    // Utils
+    ForbiddenComponent,
+
+    // Pipe
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

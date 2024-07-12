@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../model/course.model';
+import { Course } from '../../../model/course.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CourseService } from '../services/course.service';
-import { Category } from '../model/category.model';
-import { Image } from '../model/image.model';
+import { CourseService } from '../../../services/course.service';
+import { Category } from '../../../model/category.model';
+import { Image } from '../../../model/image.model';
 
 @Component({
   selector: 'app-update-produit',

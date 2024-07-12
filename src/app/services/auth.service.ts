@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from '../../environments/environment';
 
 
 
@@ -11,12 +12,9 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-/*  users: User[] = [{"username":"admin","password":"123","roles":['ADMIN']},
-                   {"username":"nadhem","password":"123","roles":['USER']} ]; */
+private helper = new JwtHelperService();
 
- private helper = new JwtHelperService();
-
-apiURL: string = 'http://localhost:8081/users';
+apiURL: string = environment.USER_API_URL;
 token!:string;
 
 public loggedUser!:string;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../model/course.model';
-import { Category } from '../model/category.model';
-import { CourseService } from '../services/course.service';
+import { Course } from '../../../model/course.model';
+import { Category } from '../../../model/category.model';
+import { CourseService } from '../../../services/course.service';
 
 @Component({
   selector: 'app-search-by-category',
