@@ -1,37 +1,39 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-
-  <a href="#" class="navbar-brand">Gestion des Cours</a>
-
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a routerLink="cours" class="nav-link">Accueil</a>
-    </li>
-
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Cours</a>
-      <div class="dropdown-menu">
-        <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="ajouter-cours">Ajouter</a>
-        <a class="dropdown-item" routerLink="cours">Lister</a>
-        <a class="dropdown-item" routerLink="rechercherParCategorie">Rechercher par Categorie</a>
-        <a class="dropdown-item" routerLink="rechercherParNom">Rechercher par Nom</a>
-        <a *ngIf="authService.isAdmin()" class="dropdown-item" routerLink="listeCategories">Gestion des Catégories</a>
+<header class="top-0 left-0 bg-white w-full z-50 transition-shadow duration-500">
+  <nav class="container flex justify-between items-center h-24">
+      <a routerLink="home" >
+        <img src="../assets/images/logo.png" alt="" class="max-w-20 max-h-20 ml-80">
+      </a>
+    <div class="flex gap-20">
+      <ul class="flex justify-between gap-16">
+        <li>
+          <a routerLink="home">
+            <i class="ri-home-line text-sm hidden font-serif"></i>
+            <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Accueil</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="ri-book-open-line text-sm hidden"></i>
+            <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Cours</span>
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <i class="ri-message-3-line text-sm hidden"></i>
+            <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Forums</span>
+          </a>
+        </li>
+      </ul>
+      <div class="flex gap-8">
+        <a href=""><i class="ri-search-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
+        <a routerLink="login"><i class="ri-user-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
       </div>
-    </li>
-  </ul>
+    </div>
 
-  <ul class="navbar-nav ml-auto">
-    <li><a class="nav-link">{{authService.loggedUser}}</a></li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">[username]</a>
-      <div class="dropdown-menu">
-        <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="login">Se connecter</a>
-        <a *ngIf="!authService.isloggedIn" class="dropdown-item" routerLink="register">S'inscrire</a>
-        <a *ngIf="authService.isloggedIn" class="dropdown-item" (click)="onLogout()">Se déconnecter</a>
-        <a *ngIf="authService.isloggedIn" class="dropdown-item" href="#">Profile</a>
-      </div>
-    </li>
-  </ul>
-</nav>
-
+  </nav>
+</header>
 <router-outlet></router-outlet>
+
+<footer>
+
+</footer>

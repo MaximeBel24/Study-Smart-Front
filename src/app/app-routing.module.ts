@@ -11,6 +11,7 @@ import { ListCategoriesComponent } from './components/category/list-categories/l
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { VerifEmailComponent } from './components/user/verif-email/verif-email.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: 'cours', component: CoursesComponent },
@@ -27,7 +28,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'interdit', component: ForbiddenComponent },
   { path: 'verifEmail', component: VerifEmailComponent },
-  { path: '', redirectTo: 'cours', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

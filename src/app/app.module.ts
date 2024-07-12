@@ -23,6 +23,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { VerifEmailComponent } from './components/user/verif-email/verif-email.component';
 import { ForbiddenComponent } from './components/utils/forbidden/forbidden.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ForbiddenComponent } from './components/utils/forbidden/forbidden.compo
     ForbiddenComponent,
 
     // Pipe
-    SearchFilterPipe
+    SearchFilterPipe,
+     HomeComponent
   ],
   imports: [
     BrowserModule,
