@@ -17,8 +17,8 @@ const httpOptions = {
 })
 export class CourseService {
 
-  apiURL: string = environment.STUDY_SMART_API_URL;
-  apiURLCat: string = environment.STUDY_SMART_CATEGORY_API_URL;
+  apiURL: string = environment.STUDY_SMART_API_URL+"/course";
+  apiURLCat: string = environment.STUDY_SMART_API_URL+"/category";
 
   course! : Course;
 

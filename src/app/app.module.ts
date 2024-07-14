@@ -66,11 +66,11 @@ import { HomeComponent } from './components/home/home.component';
   ],
   providers: [
     provideClientHydration(),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

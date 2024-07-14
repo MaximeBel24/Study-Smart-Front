@@ -12,7 +12,7 @@
           </a>
         </li>
         <li>
-          <a href="">
+          <a routerLink="cours">
             <i class="ri-book-open-line text-sm hidden"></i>
             <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Cours</span>
           </a>
@@ -25,13 +25,14 @@
         </li>
       </ul>
       <div class="flex gap-8">
-        <a href=""><i class="ri-search-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
-        <a routerLink="login"><i class="ri-user-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
+        <a routerLink="rechercherParNom"><i class="ri-search-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
+        <a (click)="openLoginModal()"><i class="ri-user-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
       </div>
     </div>
 
   </nav>
 </header>
+
 <router-outlet></router-outlet>
 
 <footer>

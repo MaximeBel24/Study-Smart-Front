@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'ajouter-cours',
     component: AddCourseComponent,
-    canActivate: [courseGuard],
+    // canActivate: [courseGuard],
   },
   { path: 'modifier-cours/:id', component: UpdateProduitComponent },
   { path: 'rechercherParCategorie', component: SearchByCategoryComponent },

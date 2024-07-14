@@ -14,7 +14,7 @@ export class AuthService {
 
   private helper = new JwtHelperService();
 
-  apiURL: string = environment.USER_API_URL;
+  apiURL: string = environment.STUDY_SMART_API_URL+"/user";
   token!:string;
 
   public loggedUser!:string;

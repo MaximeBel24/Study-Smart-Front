@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
+import { ModalService } from './services/modal.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,7 @@ export class AppComponent implements OnInit{
   title = 'study-smart';
 
   constructor(
+    private modalService: ModalService,
     public authService : AuthService, 
     private router : Router
   ) {}
@@ -19,10 +21,14 @@ export class AppComponent implements OnInit{
     this.authService.loadToken();
       if(this.authService.getToken()==null ||
           this.authService.isTokenExpired())
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
   }
 
   onLogout() {
     this.authService.logout();
+  }
+
+  openLoginModal() {
+    this.modalService.openModal();
   }
 }
