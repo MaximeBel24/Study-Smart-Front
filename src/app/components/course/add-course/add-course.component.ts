@@ -5,6 +5,7 @@ import { CourseService } from '../../../services/course.service';
 import { Router } from '@angular/router';
 import { Category } from '../../../model/category.model';
 import { response } from 'express';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-add-course',
@@ -21,13 +22,16 @@ export class AddCourseComponent implements OnInit {
   uploadedImage!: File;
   imagePath: any;
 
-  constructor(private courseService: CourseService, private router: Router) {}
+  constructor(
+    private categoryService: CategoryService,
+    private courseService: CourseService, 
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.courseService.listCategories().subscribe((cats) => {
-      this.categories = cats._embedded.categories;
-      // console.log(cats);
-    });
+    this.categoryService.listCategories().subscribe((ctgr) => {
+      this.categories = ctgr;
+    })
   }
 
   addCourse() {
@@ -35,21 +39,20 @@ export class AddCourseComponent implements OnInit {
       (cat) => cat.id == this.newIdCat
     )!;
     this.courseService.addCourse(this.newCourse).subscribe((course) => {
-      this.courseService
-        .uploadImageFS(this.uploadedImage, this.uploadedImage.name, course.id)
-        .subscribe((response: any) => {});
+      // this.courseService
+      //   .uploadImageFS(this.uploadedImage, this.uploadedImage.name, course.id)
+      //   .subscribe((response: any) => {});
 
-      this.router.navigate(['cours']);
+      this.router.navigate(['courses']);
     });
   }
 
-  onImageUpload(event: any) {
-    this.uploadedImage = event.target.files[0];
-
-    var reader = new FileReader();
-    reader.readAsDataURL(this.uploadedImage);
-    reader.onload = (_event) => {
-      this.imagePath = reader.result;
-    };
-  }
+  // onImageUpload(event: any) {
+  //   this.uploadedImage = event.target.files[0];
+  //   var reader = new FileReader();
+  //   reader.readAsDataURL(this.uploadedImage);
+  //   reader.onload = (_event) => {
+  //     this.imagePath = reader.result;
+  //   };
+  // }
 }

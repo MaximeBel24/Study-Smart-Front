@@ -20,10 +20,6 @@ export class CoursesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.courseService.listCourses().subscribe((cours) => {
-      // console.log(cours);
-      this.courses = cours;
-    });
 
     this.loadCourses();
   }

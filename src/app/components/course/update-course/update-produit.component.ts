@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CourseService } from '../../../services/course.service';
 import { Category } from '../../../model/category.model';
 import { Image } from '../../../model/image.model';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-update-produit',
@@ -24,7 +25,8 @@ export class UpdateProduitComponent implements OnInit{
   constructor(
     private activatedRoute: ActivatedRoute,
     private router : Router,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private categoryService: CategoryService
   ) { }
 
   // ngOnInit(){
@@ -45,8 +47,9 @@ export class UpdateProduitComponent implements OnInit{
   // }
 
   ngOnInit(): void {
-    this.courseService.listCategories()
-      .subscribe(cats => {this.categories = cats._embedded.categories;})
+    this.categoryService.listCategories().subscribe((ctgr) => {
+      this.categories = ctgr;
+    })
 
     this.courseService.consultCourse(this.activatedRoute.snapshot.params['id'])
       .subscribe(crs => {this.currentCourse = crs;
@@ -80,7 +83,7 @@ export class UpdateProduitComponent implements OnInit{
     this.courseService
       .updateCourse(this.currentCourse)
       .subscribe((crs) => {
-        this.router.navigate(['cours']);
+        this.router.navigate(['courses']);
       });
   }
 

@@ -17,13 +17,14 @@ import { AddCourseComponent } from './components/course/add-course/add-course.co
 import { UpdateProduitComponent } from './components/course/update-course/update-produit.component';
 import { ListCategoriesComponent } from './components/category/list-categories/list-categories.component';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
-import { SearchByCategoryComponent } from './components/search/search-by-category/search-by-category.component';
 import { SearchByNameComponent } from './components/search/search-by-name/search-by-name.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { VerifEmailComponent } from './components/user/verif-email/verif-email.component';
 import { ForbiddenComponent } from './components/utils/forbidden/forbidden.component';
 import { HomeComponent } from './components/home/home.component';
+import { ViewCourseComponent } from './components/course/view-course/view-course.component';
+import { AddCategoryComponent } from './components/category/add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,6 @@ import { HomeComponent } from './components/home/home.component';
     UpdateProduitComponent,
 
     //Search
-    SearchByCategoryComponent,
     SearchByNameComponent,
 
     // User
@@ -52,7 +52,9 @@ import { HomeComponent } from './components/home/home.component';
 
     // Pipe
     SearchFilterPipe,
-     HomeComponent
+     HomeComponent,
+     ViewCourseComponent,
+     AddCategoryComponent
   ],
   imports: [
     BrowserModule,

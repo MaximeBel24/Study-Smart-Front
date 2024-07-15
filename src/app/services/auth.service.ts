@@ -5,8 +5,6 @@ import { User } from '../model/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +12,7 @@ export class AuthService {
 
   private helper = new JwtHelperService();
 
-  apiURL: string = environment.STUDY_SMART_API_URL+"/user";
+  apiURL: string = "http://localhost:8081/users";
   token!:string;
 
   public loggedUser!:string;

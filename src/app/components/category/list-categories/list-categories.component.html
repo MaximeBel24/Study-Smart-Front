@@ -1,17 +1,18 @@
 <div class="container">
+    <a routerLink="/add-category" class="btn btn-success">Ajouter une catégorie</a>
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
-                <app-update-category 
-                    [category]="updatedCat"
+                <!--<app-update-category 
+                    </app-update-category> [category]="updatedCat"
                     (categoryUpdated)="categoryUpdated($event)"
-                    [add]="add">
-                </app-update-category>
+                    [add]="add"> 
+                </app-update-category>-->
             </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>ID</th>
                         <th>Nom de la Catégorie</th>
                         <th>Description</th>
                     </tr>
@@ -21,8 +22,8 @@
                         <td>{{cat.id}}</td>
                         <td>{{cat.name}}</td>
                         <td>{{cat.description}}</td>
-                        <td><a (click)="updateCat(cat)" class="btn btn-success">Editer</a></td>
-                        <td><a (click)="deleteCategory(cat)" class="btn btn-danger">Supprimer</a></td>
+                        <td><a [routerLink]="['/update-category', cat.id]" class="btn btn-warning"><i class="ri-edit-fill"></i></a></td>
+                        <td><a (click)="deleteCategory(cat)" class="btn btn-danger"><i class="ri-delete-bin-fill"></i></a></td> 
                     </tr>
                 </tbody>
             </table>

@@ -6,23 +6,27 @@ import { ForbiddenComponent } from './components/utils/forbidden/forbidden.compo
 import { courseGuard } from './guard/course.guard';
 import { AddCourseComponent } from './components/course/add-course/add-course.component';
 import { UpdateProduitComponent } from './components/course/update-course/update-produit.component';
-import { SearchByCategoryComponent } from './components/search/search-by-category/search-by-category.component';
 import { ListCategoriesComponent } from './components/category/list-categories/list-categories.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { VerifEmailComponent } from './components/user/verif-email/verif-email.component';
 import { HomeComponent } from './components/home/home.component';
+import { AddCategoryComponent } from './components/category/add-category/add-category.component';
+import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
+import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 
 const routes: Routes = [
-  { path: 'cours', component: CoursesComponent },
+  { path: 'courses', component: CoursesComponent },
   {
-    path: 'ajouter-cours',
+    path: 'add-course',
     component: AddCourseComponent,
     // canActivate: [courseGuard],
   },
-  { path: 'modifier-cours/:id', component: UpdateProduitComponent },
-  { path: 'rechercherParCategorie', component: SearchByCategoryComponent },
-  { path: 'listeCategories', component: ListCategoriesComponent },
+  { path: 'update-course/:id', component: UpdateProduitComponent },
+  { path: 'list-categories', component: ListCategoriesComponent },
+  { path: 'add-category', component: AddCategoryComponent },
+  { path: 'consult-course/:id', component: ViewCourseComponent},
+  { path: 'update-category/:id', component: UpdateCategoryComponent },
   { path: 'rechercherParNom', component: SearchByNameComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

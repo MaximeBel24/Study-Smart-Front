@@ -20,56 +20,62 @@ export class CourseService {
   apiURL: string = environment.STUDY_SMART_API_URL+"/course";
   apiURLCat: string = environment.STUDY_SMART_API_URL+"/category";
 
-  course! : Course;
+  courses! : Course[];
 
-  constructor(private http : HttpClient, private authService : AuthService) { 
+  constructor(
+    private http : HttpClient, 
+    private authService : AuthService
+  ) { 
 
   }
 
   listCourses(): Observable<Course[]> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer " + jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.get<Course[]>(this.apiURL+"/all",{headers:httpHeaders});
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer " + jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<Course[]>(this.apiURL+"/all",
+      // {headers:httpHeaders}
+    );
 
   }
 
   addCourse(course: Course): Observable<Course> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer " + jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.post<Course>(this.apiURL+"/addcourse", course, {headers: httpHeaders});
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer " + jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.post<Course>(this.apiURL+"/add",course, 
+      // {headers: httpHeaders}
+    );
   }
 
   deleteCourse(id : number){
-    const url = `${this.apiURL}/delcourse${id}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer " + jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.delete(url, {headers: httpHeaders});
+    const url = `${this.apiURL}/delete/${id}`;
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer " + jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.delete(url, 
+      // {headers: httpHeaders}
+    );
   }
 
   consultCourse(id: number): Observable<Course> {
     const url = `${this.apiURL}/getbyid/${id}`;
-    let jwt = this.authService.getToken();
-    jwt = "Bearer " + jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.get<Course>(url,{headers:httpHeaders});
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer " + jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<Course>(url,
+      // {headers:httpHeaders}
+    );
   }
 
 
   updateCourse(course : Course) : Observable<Course>{
-    let jwt = this.authService.getToken();
-    jwt = "Bearer " + jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.put<Course>(this.apiURL+"/updatecourse", course, {headers:httpHeaders});
-  }
-
-  listCategories():Observable<CategoryWrapper> {
-    let jwt = this.authService.getToken();
-    jwt = "Bearer " + jwt;
-    let httpHeaders = new HttpHeaders({"Authorization":jwt})
-    return this.http.get<CategoryWrapper>(this.apiURLCat,{headers: httpHeaders});
+    // let jwt = this.authService.getToken();
+    // jwt = "Bearer " + jwt;
+    // let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.put<Course>(this.apiURL+"/update", course, 
+      // {headers:httpHeaders}
+    );
   }
 
   searchByCategorie(idCat : number): Observable<Course[]> {
@@ -78,7 +84,7 @@ export class CourseService {
   }
 
   searchByTitle(title : string) : Observable<Course[]> {
-    const url = `${this.apiURL}/coursesByTitle/${title}`;
+    const url = `${this.apiURL}/getbytitle/${title}`;
     return this.http.get<Course[]>(url);
   }
 

@@ -1,4 +1,5 @@
 <div class="container">
+    <a routerLink="/add-course" class="btn btn-success">Ajouter un cours</a>
     <div class="card shadow mb-4">
         <div class="card-body">
             <table class="table table-striped">
@@ -24,8 +25,9 @@
                         <td>{{course.duration}}h</td>
                         <td>{{course.level}}</td>
                         <td>{{course.category?.name}}</td>
-                        <td><a *ngIf="authService.isAdmin()" class="btn-sm btn-info" [routerLink]="['/modifier-cours', course.id]">Modifier</a></td>
-                        <td><a *ngIf="authService.isAdmin()" class="btn-sm btn-danger" (click)="deleteCourse(course)">Supprimer</a></td>
+                        <td><a class="btn btn-info text-white" [routerLink]="['/consult-course', course.id]"><i class="ri-file-search-fill"></i></a></td>
+                        <td><a class="btn btn-warning text-white" [routerLink]="['/update-course', course.id]"><i class="ri-edit-fill"></i></a></td>
+                        <td><a class="btn btn-danger" (click)="deleteCourse(course)"><i class="ri-delete-bin-fill"></i></a></td>
                     </tr>
                 </tbody>
             </table>

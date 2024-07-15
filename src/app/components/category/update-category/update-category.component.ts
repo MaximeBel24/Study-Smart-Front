@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from '../../../model/category.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from '../../../services/category.service';
 
 
 
@@ -10,20 +12,25 @@ import { Category } from '../../../model/category.model';
 })
 export class UpdateCategoryComponent implements OnInit{
 
-  @Input()
-  category! : Category;
+  currentCategory = new Category();
 
-  @Input()
-  add! : boolean
-
-  @Output()
-  categoryUpdated = new EventEmitter<Category>();
+  constructor(
+    private activatedRoute : ActivatedRoute,
+    private router : Router,
+    private categoryService : CategoryService
+  ) {}
 
   ngOnInit(): void {
-    console.log("ngOnInit de composant UpdateCategory", this.category)
+   this.categoryService.consultCategory(this.activatedRoute.snapshot.params['id'])
+   .subscribe(ctgr => {
+    this.currentCategory = ctgr;
+   })
   }
 
-  saveCategory() {
-    this.categoryUpdated.emit(this.category);
-  }  
+  updateCategory() {
+    this.categoryService.updateCategory(this.currentCategory).subscribe((ctgr) => {
+      this.router.navigate(['list-categories']);
+    })
+  }
+
 }

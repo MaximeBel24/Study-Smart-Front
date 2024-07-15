@@ -16,34 +16,38 @@
             <label for="">Description du Cours</label>
             <input type="text" [(ngModel)]="newCourse.description" name="description" class="form-control">
         </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <label for="">Prix du Cours</label>
             <input type="number" [(ngModel)]="newCourse.price" name="price" class="form-control">
         </div>
 
-        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <label for="">Durée du Cours</label>
             <input type="number" [(ngModel)]="newCourse.duration" name="duration" class="form-control">
         </div>
-        <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <label for="">Niveau du Cours</label>
-            <input type="text" [(ngModel)]="newCourse.level" name="level" class="form-control">
+            <select [(ngModel)]="newCourse.level" name="level" id="course-level" class="form-select">
+                <option value="débutant">Débutant</option>
+                <option value="intermédiaire">Intermédiaire</option>
+                <option value="expert">Expert</option>
+            </select>
         </div>
         <div class="col-sm-4 col-md-4 col-lg-4">
             <label>Catégorie</label>
-            <select name="idCat" id="idCat" class="form-control form-control-lg" [(ngModel)]="newIdCat">
+            <select name="idCat" id="idCat" class="form-select" [(ngModel)]="newIdCat">
                 <option *ngFor="let cat of categories" [value]="cat.id">
                     {{cat.name}}
                 </option>
             </select>
         </div>
-        <div class="col-sm-3 col-md-3 col-lg-3">
+        <!--<div class="col-sm-3 col-md-3 col-lg-3">
             <label for="">Image du Cours</label>
             <input type="file" [(ngModel)]="newCourse.image" name="image" class="form-control" (change)="onImageUpload($event)">
         </div>
         <div class="col-sm-16 col-md-16 col-lg-16">
             <img [src]="imagePath" class="card-img-top img-fluid rounded-start" style="width: 500px; height: 300px">
-        </div>
+        </div> -->
         <div class="mt-2">
             <button type="submit" (click)="addCourse()" class="btn btn-success">Ajouter le Cours</button>
         </div>
