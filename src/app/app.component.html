@@ -1,113 +1,144 @@
-<header class="w-full z-50 transition-shadow duration-500">
-  <nav class="container flex justify-between items-center h-24">
-      <a routerLink="home">
-        <img src="../assets/images/logo.png" alt="" class="max-w-20 max-h-20">
-      </a>
-    <div class="flex gap-20">
-      <ul class="flex justify-between items-center gap-16">
-        <li>
-          <a routerLink="home">
-            <i class="ri-home-line text-sm hidden font-serif"></i>
-            <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Accueil</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="courses">
-            <i class="ri-book-open-line text-sm hidden"></i>
-            <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Cours</span>
-          </a>
-        </li>
-        <li>
-          <a routerLink="list-categories">
-            <i class="ri-message-3-line text-sm hidden"></i>
-            <span class="text-slate-600 text-lg hover:text-sky-400 duration-300">Catégorie</span>
-          </a>
-        </li>
-      </ul>
-      <div class="flex gap-8">
-        <a routerLink="rechercherParNom"><i class="ri-search-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
-        <a routerLink="login"><i class="ri-user-line text-slate-600 text-lg hover:text-sky-400 duration-300"></i></a>
-      </div>
-    </div>
+<header class="header" id="header">
+  <nav class="nav container">
+     <a href="#" class="nav__logo">
+        <img class="logo" src="../assets/images/logo.png" alt="">
+     </a>
+     <div class="nav__menu">
+        <ul class="nav__list">
+           <li class="nav__item">
+              <a routerLink="home" class="nav__link active-link">
+                 <i class="ri-home-line"></i>
+                 <span>Accueil</span>
+              </a>
+           </li>
+           <li class="nav__item">
+              <a routerLink="courses" class="nav__link">
+                 <i class="ri-book-open-line"></i>
+                 <span>Cours</span>
+              </a>
+           </li>
+           <li class="nav__item">
+              <a routerLink="list-categories" class="nav__link">
+                 <i class="ri-message-3-line"></i>
+                 <span>Catégorie</span>
+              </a>
+           </li>
+        </ul>
+     </div>
 
+     <div class="nav__actions">
+        <!-- Search button -->
+        <i class="ri-search-line search-button" ></i>
+
+        <!-- Login button -->
+         <a routerLink="login">
+          <i class="ri-user-line login-button"></i>
+         </a>
+        
+     
+     </div>
   </nav>
 </header>
-<main class="overflow-hidden"><!-- .main -->
+
+<main class="main"><!-- .main -->
 
   <router-outlet></router-outlet>
 
 </main>
 
-<footer>
-  <div>
+<footer class="footer">
+  <div class="footer__container container grid">
+     <div>
+        <a href="#" class="footer__logo">
+           <img class="logo" src="../assets/images/logo.png" alt="">
+        </a>
+        <p class="footer__description">
+           Find and explore the best <br>
+           eBooks from all your <br>
+           favorite writers.
+        </p>
+     </div>
 
-    <div>
-      <a routerLink="home">
-        <img src="../assets/images/logo.png" class="max-w-28" alt="">
-      </a>
-      <p> <!-- home_description-->
-        Rejoignez notre communauté d'apprenants<br> 
-        passionnés et commencez à apprendre<br>
-        avec nous dès maintenant !
-      </p>
-    </div>
-
-
-    <div>
-      <ul>
-        <li><a href="">Awards</a></li>
-        <li><a href="">FAQs</a></li>
-        <li><a href="">Privacy policy</a></li>
-        <li><a href="">Terms of service</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3>Company</h3>
-      <ul>
-        <li><a href="">Blogs</a></li>
-        <li><a href="">Community</a></li>
-        <li><a href="">Our team</a></li>
-        <li><a href="">Help Center</a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3>Contact</h3>
-
-      <ul>
-        <li>
-          <address>
-            Av. Doranco <br>
-            Noiseau 94880, France
-          </address>
-        </li>
-        <li>
-          <address>
-            study-smart-project&#64;mail.com<br>
-            01-XX-00-XX-00
-          </address>
-        </li>
-      </ul>
-    </div>
-
-    <div>
-      <h3>
+     <div class="footer__data grid">
         <div>
-          <a href="https://www.facebook.com/" target="_blank">
-            <i class="ri-facebook-circle-line"></i>
-         </a>
+           <h3 class="footer__title">About</h3>
 
-         <a href="https://www.instagram.com/" target="_blank">
-            <i class="ri-instagram-line"></i>
-
-         </a>
-
-         <a href="https://twitter.com/" target="_blank">
-            <i class="ri-twitter-x-line"></i>
-         </a>
+           <ul class="footer__links">
+              <li>
+                 <a href="" class="footer__link">Awards</a>
+              </li>
+              <li>
+                 <a href="" class="footer__link">FAQs</a>
+              </li>
+              <li>
+                 <a href="" class="footer__link">Privacy policy</a>
+              </li>
+              <li>
+                 <a href="" class="footer__link">Terms of services</a>
+              </li>
+           </ul>
         </div>
-      </h3>
-    </div>
+
+        <div>
+           <h3 class="footer__title">Company</h3>
+
+           <ul class="footer__links">
+              <li>
+                 <a href="" class="footer__link">Blogs</a>
+              </li>
+              <li>
+                 <a href="" class="footer__link">Community</a>
+              </li>
+              <li>
+                 <a href="" class="footer__link">Our team</a>
+              </li>
+              <li>
+                 <a href="" class="footer__link">Help center</a>
+              </li>
+           </ul>
+        </div>
+
+        <div>
+           <h3 class="footer__title">Contact</h3>
+
+           <ul class="footer__links">
+              <li>
+                 <address class="footer__info">
+                    Av. Hacienda <br>
+                    Lima 4321, Peru
+                 </address>
+              </li>
+              <li>
+                 <address class="footer__info">
+                    e.book&#94;email.com <br>
+                    0987-654-321
+                 </address>
+              </li>
+           </ul>
+        </div>
+
+        <div>
+           <h3 class="footer__title">Social</h3>
+
+           <div class="footer__social">
+              <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                 <i class="ri-facebook-circle-line"></i>
+              </a>
+
+              <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                 <i class="ri-instagram-line"></i>
+
+              </a>
+
+              <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                 <i class="ri-twitter-x-line"></i>
+              </a>
+           </div>
+        </div>
+
+     </div>
   </div>
+  <span class="footer__copy">
+     &#169; All Rights Reserved By MaximeB
+  </span>
 </footer>

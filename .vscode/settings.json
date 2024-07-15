@@ -4,6 +4,6 @@
     "*.scss": "tailwindcss"
   },
   "editor.quickSuggestions": {
-    "strings": "on"
+    "strings": "off"
   }
 }

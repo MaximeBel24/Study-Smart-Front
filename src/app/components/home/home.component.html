@@ -1,18 +1,43 @@
-    <div class="mx-20 mt-16 max-w-full px-56 flex justify-center items-center gap-60"> <!-- home_container container grid -->
-        <div class="text-start"> <!-- home data-->
-            <h1 class="mb-4 text-4xl"> <!-- home title -->
-                Bienvenue sur <br> StudySmart
-            </h1>
-            <p class="mb-16"> <!-- home_description-->
-                Rejoignez notre communauté d'apprenants passionnés et commencez à apprendre avec nous dès maintenant !
-            </p>
-            <a routerLink="/courses" class="inline bg-sky-400 text-white font-semibold px-4 py-3 no-underline hover:shadow-2xl hover:shadow-blue-950 transition-shadow duration-500">Commencer à apprendre</a> <!-- button -->
-        </div>
-        <div class="grid"> <!-- home images-->
-            <div> 
-                <div>
-                    <img src="../../../assets/images/logo.png" alt="" class="max-w-2xl">
-                </div>
+         <!--==================== HOME ====================-->
+         <section class="home">
+            <div class="home__container container grid">
+               <div class="home__data">
+                  <h1 class="home__title">
+                     Bienvenue sur<br>StudySmart
+                  </h1>
+                  <p class="home__description">
+                     Rejoignez notre communauté d'apprenants passionnés et commencez à apprendre avec nous dès maintenant !
+                  </p>
+                  <a href="#" class="button">Commencer à apprendre</a>
+               </div>
+               <div class="home__images">
+                  <div class="home__swiper swiper">
+                     <div class="swiper-wrapper">
+                        <img src="../../../assets/images/logo.png" alt="">
+                     </div>
+                  </div>
+               </div>
             </div>
-        </div>
-    </div>    
+         </section>
+
+         <!--==================== SERVICES ====================-->
+         <section class="services section">
+            <div class="services__container container grid">
+               <article class="services__card">
+                  <i class="ri-book-open-line"></i>
+                  <h3 class="services__title">Inscription gratuite</h3>
+                  <p class="services__description">Découvrez notre plateforme</p>
+               </article>
+
+               <article class="services__card">
+                  <i class="ri-lock-unlock-line"></i>
+                  <h3 class="services__title">Accès à vie</h3>
+                  <p class="services__description">Apprenez à votre rythme</p>
+               </article>
+               <article class="services__card">
+                  <i class="ri-time-line"></i>
+                  <h3 class="services__title">Apprentissage flexible</h3>
+                  <p class="services__description">À tout moment, n'importe où</p>
+               </article>
+            </div>
+         </section>  

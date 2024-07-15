@@ -1,0 +1,297 @@
+@import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@500&family=Montserrat:wght@400;500;600&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  --header-height: 3.5rem;
+
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: #32a0c3;
+  --title-color: #082a53;
+  --text-color: hsl(230, 16%, 45%);
+  --border-color: #afe7e8;
+  --white-color: hsl(0, 0%, 100%);
+  --body-color: #edf1f2;
+  --container-color: #fdfdfd;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Montserrat", sans-serif;
+  --second-font: "Montagu Slab", serif;
+  --biggest-font-size: 2rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+  --smaller-font-size: .75rem;
+
+  /*========== Font weight ==========*/
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== z index ==========*/
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1150px) {
+  :root {
+    --biggest-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+}
+
+body {
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: background-color .4s;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+h1, h2, h3, h4 {
+  color: var(--title-color);
+  font-family: var(--second-font);
+  font-weight: var(--font-medium);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== REUSABLE CSS CLASSES ===============*/
+.container {
+  max-width: 1220px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 1rem;
+}
+
+.section__title {
+  text-align: center;
+  font-size: var(--h1-font-size);
+  font-family: var(--second-font);
+  margin-bottom: 2rem;
+}
+
+.main {
+  overflow: hidden; /* For animation ScrollReveal */
+}
+
+/* Active link */
+.active-link{
+  color: var(--first-color);
+}
+
+/*=============== HOME ===============*/
+.home__swiper{
+    margin: initial;
+  }
+  
+  .home__container{
+    padding-top: 2rem;
+    row-gap: 2rem;
+  }
+  
+  .home__data{
+    text-align: center;
+  }
+  
+  .home__title{
+    font-size: var(--biggest-font-size);
+    margin-bottom: 1rem;
+  }
+  
+  .home__description{
+    margin-bottom: 2rem;
+  }
+  
+  .home__images{
+    display: grid;
+  }
+  
+  .home__article,
+  .home__img{
+    width: 220px;
+    transition: scale .4s;
+  }
+  
+  .home__article{
+    scale: .8;
+  }
+  /* Swiper class */
+  .swiper-slide-active,
+  .swiper-slide-duplicate-active{
+    scale: 1;
+  }
+
+  /*=============== BUTTON ===============*/
+.button{
+    display: inline;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    font-weight: var(--font-semi-bold);
+    padding: 1rem 1.5rem;
+    transition: box-shadow .4s;
+  }
+  
+  .button:hover{
+    box-shadow: 0 4px 32px hsla(230, 72%, 32%, .4);
+  }
+
+/*=============== SERVICES ===============*/
+.services__container{
+    row-gap: 3rem;
+  }
+  
+  .services__card{
+    text-align: center;
+  }
+  
+  .services__card i{
+    display: block;
+    font-size: 3rem;
+    color: var(--first-color);
+    margin-bottom: 1rem;
+  }
+  
+  .services__title{
+    font-size: var(--h3-font-size);
+    margin-bottom: .5rem;
+  }
+
+  /*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 320px){
+    .container{
+      margin-inline: 1rem;
+    }
+  
+    .nav__menu{
+      padding-inline: 3rem;
+    }
+  
+    .footer__data{
+      grid-template-columns: 1fr;
+      row-gap: 2rem;
+    }
+  }
+  
+  @media screen and (min-width: 576px){
+  
+    .home__container{
+      grid-template-columns: 420px;
+      justify-content: center;
+    }
+  
+    .footer__data{
+      grid-template-columns: repeat(3, max-content);
+    }
+  }
+  
+  @media screen and (min-width: 768px){
+    .home__container{
+      grid-template-columns: 580px;
+    }
+  
+    .home__data{
+      width: 420px;
+      justify-self: center;
+    }
+  
+    .services__container{
+      grid-template-columns: repeat(3, max-content);
+      justify-content: center;
+      column-gap: 5rem;
+    }
+  
+  }
+  
+  /* For large devices */
+  @media screen and (min-width:1150px){
+    .section{
+      padding-block: 7rem 2rem;
+    }
+  
+    .home--data{
+      width: initial;
+    }
+  
+    .services__container{
+      column-gap: 10rem;
+    }
+    .services__card i{
+      font-size: 3.5rem;
+    }
+}
+  
+  @media screen and (min-width: 1220px){
+    .container{
+      margin-inline: auto;
+    }
+
+    .home__container{
+        grid-template-columns: 435px 745px;
+        align-items: center;
+        padding-block: 7rem 2rem;
+    }
+
+    .home__data{
+        text-align: initial;
+    }
+
+    .home__description{
+        margin-bottom: 4rem;
+    }
+    .home__article,
+    .home__img{
+        width: 290px;
+    }
+  }

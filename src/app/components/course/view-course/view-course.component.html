@@ -1,13 +1,13 @@
 <h2 class="text-center">
     {{ currentCourse.title }}
 </h2>
-<div class="container">
+<div>
     <p class="text-center">
         {{ currentCourse.description }}
     </p>
     <p class="text-center">
         Niveau : 
-        <span class="text" [ngStyle]="{
+        <span class="fw-bold" [ngStyle]="{
             'color': currentCourse.level === 'Débutant' ? 'green' :
                      currentCourse.level === 'Intermédiaire' ? 'orange' :
                      currentCourse.level === 'Avancé' ? 'black' : 'red'
