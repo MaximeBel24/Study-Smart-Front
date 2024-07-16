@@ -19,8 +19,7 @@ export class CategoryService {
   category! : Category[];
 
   constructor(
-    private http : HttpClient,
-    private authService : AuthService
+    private http : HttpClient
   ) { }
 
   listCategories() : Observable<Category[]> {

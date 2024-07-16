@@ -1,0 +1,21 @@
+a{
+    text-decoration: none;
+}
+
+.container{
+    min-height: 360px;
+}
+
+/*=============== BUTTON ===============*/
+  .button{
+    display: inline;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    font-weight: var(--font-semi-bold);
+    padding: .5rem .5rem;
+    transition: box-shadow .4s;
+  }
+  
+  .button:hover{
+    box-shadow: 0 4px 32px hsla(230, 72%, 32%, .4);
+  }

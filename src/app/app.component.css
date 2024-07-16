@@ -132,7 +132,7 @@ img {
 
 /*=============== HEADER & NAV ===============*/
 .header{
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;
@@ -301,21 +301,7 @@ img {
     text-align: center;
     font-size: var(--small-font-size);
   }
-  /*=============== SCROLL BAR ===============*/
-  ::-webkit-scrollbar{
-    width: 0.6rem;
-    border-radius: .5rem;
-    background-color: hsl(230, 16%, 85%);
-  }
-  
-  ::-webkit-scrollbar-thumb{
-    border-radius: .5rem;
-    background-color: hsl(230, 16%, 65%);
-  }
-  
-  ::-webkit-scrollbar-thumb:hover{
-    background-color: hsl(230, 16%, 55%);
-  }
+
 
 
 /*=============== BREAKPOINTS ===============*/

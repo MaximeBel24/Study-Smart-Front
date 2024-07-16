@@ -4,7 +4,6 @@ import { Image } from '../model/image.model'
 import { Category } from '../model/category.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CategoryWrapper } from '../model/category-wrapped.model';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
 

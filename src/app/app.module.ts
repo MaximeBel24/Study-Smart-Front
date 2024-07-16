@@ -25,6 +25,11 @@ import { ForbiddenComponent } from './components/utils/forbidden/forbidden.compo
 import { HomeComponent } from './components/home/home.component';
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 import { AddCategoryComponent } from './components/category/add-category/add-category.component';
+import { AddModuleComponent } from './components/module/add-module/add-module.component';
+import { UpdateModuleComponent } from './components/module/update-module/update-module.component';
+import { AddLessonComponent } from './components/lesson/add-lesson/add-lesson.component';
+import { ViewLessonComponent } from './components/lesson/view-lesson/view-lesson.component';
+import { UpdateLessonComponent } from './components/lesson/update-lesson/update-lesson.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +59,12 @@ import { AddCategoryComponent } from './components/category/add-category/add-cat
     SearchFilterPipe,
      HomeComponent,
      ViewCourseComponent,
-     AddCategoryComponent
+     AddCategoryComponent,
+     AddModuleComponent,
+     UpdateModuleComponent,
+     AddLessonComponent,
+     ViewLessonComponent,
+     UpdateLessonComponent
   ],
   imports: [
     BrowserModule,

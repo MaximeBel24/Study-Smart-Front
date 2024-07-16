@@ -1,7 +1,7 @@
 <h2 class="text-center">
     {{ currentCourse.title }}
 </h2>
-<div>
+<div class="container">
     <p class="text-center">
         {{ currentCourse.description }}
     </p>
@@ -16,4 +16,29 @@
         </span>
          , Durée : {{ currentCourse.duration }}h
     </p>
+    <div class="d-flex justify-content-center gap-2">
+        <a class="button" [routerLink]="['/add-module', currentCourse.id]">
+            Ajouter un Module
+        </a>
+    </div>
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <ul *ngFor="let module of modules; let i = index">
+
+            <li>
+                Chapitre {{ i + 1 }} : {{ module.title }}, Durée : {{ module.duration }}h.....
+                <a class="btn btn-sm btn-danger" (click)="deleteModule(module)"><i class="ri-delete-bin-fill"></i></a>
+            </li>
+
+            <ul >
+
+            </ul>
+            
+            <a routerLink="" class="button">Ajouter une leçon</a>
+
+        </ul>
+    </div>
+
+
+    
+    
 </div>

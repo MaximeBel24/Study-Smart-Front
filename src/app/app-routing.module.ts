@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AddCategoryComponent } from './components/category/add-category/add-category.component';
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
+import { AddModuleComponent } from './components/module/add-module/add-module.component';
 
 const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
@@ -25,8 +26,9 @@ const routes: Routes = [
   { path: 'update-course/:id', component: UpdateProduitComponent },
   { path: 'list-categories', component: ListCategoriesComponent },
   { path: 'add-category', component: AddCategoryComponent },
-  { path: 'consult-course/:id', component: ViewCourseComponent},
+  { path: 'consult-course/:id', component: ViewCourseComponent },
   { path: 'update-category/:id', component: UpdateCategoryComponent },
+  { path: 'add-module/:id', component: AddModuleComponent},
   { path: 'rechercherParNom', component: SearchByNameComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
