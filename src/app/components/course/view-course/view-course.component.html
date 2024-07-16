@@ -1,8 +1,9 @@
-<h2 class="text-center mt-4">
-    {{ currentCourse.title }}
-</h2>
+
 <div class="container mt-4">
     <div class="card mb-4">
+        <h2 class="text-center mt-4">
+            {{ currentCourse.title }}
+        </h2>
         <div class="card-body text-center">
             <p class="card-text">
                 {{ currentCourse.description }}
@@ -16,7 +17,7 @@
                 }">
                     {{ currentCourse.level }}
                 </span>
-                , Durée : {{ currentCourse.duration }}h
+                , Durée : {{ currentCourse.duration | duration }}
             </p>
             <a class="btn btn-primary" [routerLink]="['/add-module', currentCourse.id]">
                 Ajouter un Module
@@ -30,7 +31,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h5>Chapitre {{ im + 1 }} : {{ module.title }}</h5>
-                        <p>Durée : {{ module.duration }}h</p>
+                        <p>Durée : {{ module.duration | duration }}</p>
                     </div>
                     <div>
                         <a class="btn btn-sm btn-danger me-2" (click)="deleteModule(module)"><i class="ri-delete-bin-fill"></i></a>
@@ -42,7 +43,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6>Leçon {{ il + 1 }} : {{ lesson.title }}</h6>
-                                <p>Durée : {{ lesson.duration }}m</p>
+                                <p>Durée : {{ lesson.duration | duration }}</p>
                             </div>
                             <a href="" class="btn btn-sm btn-danger" (click)="deleteLesson(module.id, lesson.id)">
                               <i class="ri-delete-bin-fill"></i>

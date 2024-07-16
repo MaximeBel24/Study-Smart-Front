@@ -1,9 +1,10 @@
-<div class="container">
-    <a routerLink="/add-course" class="btn btn-success">Ajouter un cours</a>
+<div class="container mt-5">
+    <h2 class="text-center">Gestion des cours</h2>
+    <a routerLink="/add-course" class="btn btn-success mb-3">Ajouter un cours</a>
     <div class="card shadow mb-4">
         <div class="card-body">
-            <table class="table table-striped">
-                <thead>
+            <table class="table table-hover">
+                <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>Titre</th>
@@ -13,21 +14,35 @@
                         <th>Durée</th>
                         <th>Niveau</th>
                         <th>Catégorie</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody *ngFor="let course of courses">
-                    <tr>
+                <tbody>
+                    <tr *ngFor="let course of courses">
                         <td>{{course.id}}</td>
                         <td>{{course.title}}</td>
                         <td>{{course.description}}</td>
-                        <td><img src="{{apiurl + '/image/loadfromFS/' + course.id}}" style="height: 50px; width: 100px" class="card-img-top card-responsive"></td>
+                        <td>
+                            <img [src]="apiurl + '/image/loadfromFS/' + course.id" 
+                                 alt="Course Image" 
+                                 class="img-thumbnail" 
+                                 style="height: 50px; width: 100px">
+                        </td>
                         <td>{{course.price}} €</td>
                         <td>{{course.duration}}h</td>
                         <td>{{course.level}}</td>
                         <td>{{course.category?.name}}</td>
-                        <td><a class="btn btn-info text-white" [routerLink]="['/consult-course', course.id]"><i class="ri-file-search-fill"></i></a></td>
-                        <td><a class="btn btn-warning text-white" [routerLink]="['/update-course', course.id]"><i class="ri-edit-fill"></i></a></td>
-                        <td><a class="btn btn-danger" (click)="deleteCourse(course)"><i class="ri-delete-bin-fill"></i></a></td>
+                        <td class="d-flex flex-column">
+                            <a class="btn btn-info text-white btn-sm" [routerLink]="['/consult-course', course.id]">
+                                <i class="ri-file-search-fill"></i>
+                            </a>
+                            <a class="btn btn-warning text-white btn-sm" [routerLink]="['/update-course', course.id]">
+                                <i class="ri-edit-fill"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" (click)="deleteCourse(course)">
+                                <i class="ri-delete-bin-fill"></i>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

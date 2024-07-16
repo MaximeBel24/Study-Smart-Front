@@ -30,6 +30,7 @@ import { UpdateModuleComponent } from './components/module/update-module/update-
 import { AddLessonComponent } from './components/lesson/add-lesson/add-lesson.component';
 import { ViewLessonComponent } from './components/lesson/view-lesson/view-lesson.component';
 import { UpdateLessonComponent } from './components/lesson/update-lesson/update-lesson.component';
+import { DurationPipe } from './pipe/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -57,14 +58,15 @@ import { UpdateLessonComponent } from './components/lesson/update-lesson/update-
 
     // Pipe
     SearchFilterPipe,
-     HomeComponent,
-     ViewCourseComponent,
-     AddCategoryComponent,
-     AddModuleComponent,
-     UpdateModuleComponent,
-     AddLessonComponent,
-     ViewLessonComponent,
-     UpdateLessonComponent
+    HomeComponent,
+    ViewCourseComponent,
+    AddCategoryComponent,
+    AddModuleComponent,
+    UpdateModuleComponent,
+    AddLessonComponent,
+    ViewLessonComponent,
+    UpdateLessonComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,

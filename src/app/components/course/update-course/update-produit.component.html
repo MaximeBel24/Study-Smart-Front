@@ -1,76 +1,65 @@
-<div class="container">
-    <div>
-        <h2>Modifier un Cours :</h2>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2>Modifier un Cours</h2>
     </div>
-    <form action="">
+    <form>
+        <!-- <div class="mb-3">
+            <label for="courseId" class="form-label">ID du Cours</label>
+            <input type="text" [(ngModel)]="currentCourse.id" name="id" id="courseId" class="form-control">
+        </div> -->
 
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label for="">Titre du Cours</label>
-            <input type="text" [(ngModel)]="currentCourse.title" name="title" class="form-control">
-        </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label for="">Description du Cours</label>
-            <input type="text" [(ngModel)]="currentCourse.description" name="description" class="form-control">
-        </div>
-
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label for="">Prix du Cours</label>
-            <input type="number" [(ngModel)]="currentCourse.price" name="price" class="form-control">
-        </div>
-
-        <div class="col-sm-2 col-md-2 col-lg-2">
-            <label for="">Niveau du Cours</label>
-            <select [(ngModel)]="currentCourse.level" name="level" id="course-level" class="form-select">
-                <option value="Débutant">Débutant</option>
-                <option value="Intermédiaire">Intermédiaire</option>
-                <option value="Expert">Expert</option>
-            </select>
-        </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <label>Catégorie</label>
-            <select name="idCat" id="idCat" class="form-select form-select-lg" [(ngModel)]="updatedCatId">
-                <option *ngFor="let cat of categories" [value]="cat.id">
-                    {{cat.name}}
-                </option>
-            </select>
-        </div>
-
-
-        <div class="col-sm-16 col-md-16 col-lg-16">
-            <label for="">Image du Cours</label>
-            <input type="file" [(ngModel)]="currentCourse.image" name="image" class="form-control" (change)="onImageUpload($event)">
-        </div>
-
-        <div class="mt-2">
-            <button type="submit" (click)="onAddImageCourse()" class="btn btn-success">Ajouter Image</button>
-        </div>
-
-        <div class="col-sm-16 col-md-16 col-lg-16">
-            <img [src]="myImage" class="card-img-top img-fluid rounded-start"
-            style="width: 500px; height: 300px" />
-        </div>
-
-        <div class="card shadow mb-4">
-            <div class="card-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Images</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let img of currentCourse.images">
-                        <tr>
-                            <td><img src="{{'data:' + img.type + ';base64,' + img.image}}" style="height: 50px; width: 100px" class="card-img-top img-responsive"></td>
-                            <td style="width: 20%;"><a class="btn btn-danger" (click)="deleteImage(img)">Supprimer</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="courseTitle" class="form-label">Titre du Cours</label>
+                <input type="text" [(ngModel)]="currentCourse.title" name="title" id="courseTitle" class="form-control" placeholder="Entrez le titre du cours">
+            </div>
+            <div class="col-md-6">
+                <label for="coursePrice" class="form-label">Prix du Cours</label>
+                <input type="number" [(ngModel)]="currentCourse.price" name="price" id="coursePrice" class="form-control" placeholder="Entrez le prix du cours">
             </div>
         </div>
 
-        <div class="mt-2">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="courseLevel" class="form-label">Niveau du Cours</label>
+                <select [(ngModel)]="currentCourse.level" name="level" id="courseLevel" class="form-select">
+                    <option value="Débutant">Débutant</option>
+                    <option value="Intermédiaire">Intermédiaire</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="courseCategory" class="form-label">Catégorie</label>
+                <select name="idCat" id="courseCategory" class="form-select" [(ngModel)]="updatedCatId">
+                    <option *ngFor="let cat of categories" [value]="cat.id">
+                        {{cat.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Uncomment if needed
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="courseImage" class="form-label">Image du Cours</label>
+                <input type="file" [(ngModel)]="currentCourse.image" name="image" id="courseImage" class="form-control" (change)="onImageUpload($event)">
+            </div>
+        </div>
+        -->
+
+        <!-- Uncomment if needed
+        <div class="mb-3">
+            <img [src]="imagePath" class="card-img-top img-fluid rounded" style="max-width: 100%; height: auto;">
+        </div>
+        -->
+
+        <div class="mb-3">
+            <label for="courseDescription" class="form-label">Description du Cours</label>
+            <textarea [(ngModel)]="currentCourse.description" name="description" id="courseDescription" class="form-control" rows="5" placeholder="Entrez la description du cours"></textarea>
+        </div>
+
+        <div class="text-center">
             <button type="submit" (click)="updateCourse()" class="btn btn-success">Modifier le Cours</button>
         </div>
     </form>
 </div>
-

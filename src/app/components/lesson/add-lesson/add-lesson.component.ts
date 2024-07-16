@@ -6,6 +6,7 @@ import { LessonService } from '../../../services/lesson.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from '../../../model/course.model';
 import { CourseService } from '../../../services/course.service';
+import Quill from 'quill';
 
 @Component({
   selector: 'app-add-lesson',
@@ -22,6 +23,14 @@ export class AddLessonComponent implements OnInit{
   currentModuleId!: number;
   currentCourseId!: number;
 
+  // quill = new Quill('#content',{
+  //   debug: 'info',
+  //   modules: {
+  //     toolbar : true,
+  //   },
+  //   placeholder: 'Compose an epic ...',
+  //   theme: 'snow'
+  // })
 
   constructor(
     private moduleService : ModuleService,
