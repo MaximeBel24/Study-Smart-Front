@@ -1,44 +1,56 @@
-<h2 class="text-center">
+<h2 class="text-center mt-4">
     {{ currentCourse.title }}
 </h2>
-<div class="container">
-    <p class="text-center">
-        {{ currentCourse.description }}
-    </p>
-    <p class="text-center">
-        Niveau : 
-        <span class="fw-bold" [ngStyle]="{
-            'color': currentCourse.level === 'Débutant' ? 'green' :
-                     currentCourse.level === 'Intermédiaire' ? 'orange' :
-                     currentCourse.level === 'Avancé' ? 'black' : 'red'
-        }">
-            {{ currentCourse.level }}
-        </span>
-         , Durée : {{ currentCourse.duration }}h
-    </p>
-    <div class="d-flex justify-content-center gap-2">
-        <a class="button" [routerLink]="['/add-module', currentCourse.id]">
-            Ajouter un Module
-        </a>
+<div class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-body text-center">
+            <p class="card-text">
+                {{ currentCourse.description }}
+            </p>
+            <p class="card-text">
+                Niveau : 
+                <span class="fw-bold" [ngStyle]="{
+                    'color': currentCourse.level === 'Débutant' ? 'green' :
+                             currentCourse.level === 'Intermédiaire' ? 'orange' :
+                             currentCourse.level === 'Avancé' ? 'black' : 'red'
+                }">
+                    {{ currentCourse.level }}
+                </span>
+                , Durée : {{ currentCourse.duration }}h
+            </p>
+            <a class="btn btn-primary" [routerLink]="['/add-module', currentCourse.id]">
+                Ajouter un Module
+            </a>
+        </div>
     </div>
+
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <ul *ngFor="let module of modules; let i = index">
-
-            <li>
-                Chapitre {{ i + 1 }} : {{ module.title }}, Durée : {{ module.duration }}h.....
-                <a class="btn btn-sm btn-danger" (click)="deleteModule(module)"><i class="ri-delete-bin-fill"></i></a>
+        <ul class="list-group w-100">
+            <li class="list-group-item" *ngFor="let module of modules; let im = index">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5>Chapitre {{ im + 1 }} : {{ module.title }}</h5>
+                        <p>Durée : {{ module.duration }}h</p>
+                    </div>
+                    <div>
+                        <a class="btn btn-sm btn-danger me-2" (click)="deleteModule(module)"><i class="ri-delete-bin-fill"></i></a>
+                        <a class="btn btn-sm btn-success" [routerLink]="['/add-lesson', currentCourse.id, module.id]"><i class="ri-add-box-fill"></i></a>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush mt-3 ">
+                    <li class="list-group-item" *ngFor="let lesson of lessons[module.id]; let il = index">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6>Leçon {{ il + 1 }} : {{ lesson.title }}</h6>
+                                <p>Durée : {{ lesson.duration }}m</p>
+                            </div>
+                            <a href="" class="btn btn-sm btn-danger" (click)="deleteLesson(module.id, lesson.id)">
+                              <i class="ri-delete-bin-fill"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </li>
-
-            <ul >
-
-            </ul>
-            
-            <a routerLink="" class="button">Ajouter une leçon</a>
-
         </ul>
     </div>
-
-
-    
-    
 </div>

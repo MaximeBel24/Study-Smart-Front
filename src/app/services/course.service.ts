@@ -77,6 +77,10 @@ export class CourseService {
     );
   }
 
+  updateCourseDuration(id : number): Observable<any> {
+    return this.http.put(this.apiURL+`/update-duration/${id}`, {})
+  }
+
   searchByCategorie(idCat : number): Observable<Course[]> {
     const url = `${this.apiURL}/prodscat/${idCat}`;
     return this.http.get<Course[]>(url);

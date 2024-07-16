@@ -44,4 +44,8 @@ export class ModuleService {
   deleteModule(id : number){
     return this.http.delete(this.apiURL+`/delete/${id}`);
   }
+
+  updateModuleDuration(id : number): Observable<any> {
+    return this.http.put(this.apiURL+`/update-duration/${id}`, {})
+  }
 }

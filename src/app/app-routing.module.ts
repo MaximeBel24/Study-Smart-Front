@@ -15,6 +15,7 @@ import { AddCategoryComponent } from './components/category/add-category/add-cat
 import { UpdateCategoryComponent } from './components/category/update-category/update-category.component';
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 import { AddModuleComponent } from './components/module/add-module/add-module.component';
+import { AddLessonComponent } from './components/lesson/add-lesson/add-lesson.component';
 
 const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'consult-course/:id', component: ViewCourseComponent },
   { path: 'update-category/:id', component: UpdateCategoryComponent },
   { path: 'add-module/:id', component: AddModuleComponent},
+  { path: 'add-lesson/:courseId/:moduleId', component: AddLessonComponent },
   { path: 'rechercherParNom', component: SearchByNameComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

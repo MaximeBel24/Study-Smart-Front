@@ -1,4 +1,4 @@
-import Module from "module";
+import { Module } from "./module.model";
 
 export class Lesson {
     id! : number;
