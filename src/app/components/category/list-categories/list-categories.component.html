@@ -1,20 +1,17 @@
-<div class="container">
-    <a routerLink="/add-category" class="btn btn-success">Ajouter une catégorie</a>
+<div class="container mt-5">
+    <h2 class="text-center">Gestion des catégories</h2>
+    <div class="text-center">
+        <a routerLink="/add-category" class="btn btn-success my-3">Ajouter une catégorie</a>
+    </div> 
     <div class="card shadow mb-4">
         <div class="card-body">
-            <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
-                <!--<app-update-category 
-                    </app-update-category> [category]="updatedCat"
-                    (categoryUpdated)="categoryUpdated($event)"
-                    [add]="add"> 
-                </app-update-category>-->
-            </div>
-            <table class="table table-striped">
-                <thead>
+            <table class="table table-hover">
+                <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>Nom de la Catégorie</th>
                         <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,8 +19,10 @@
                         <td>{{cat.id}}</td>
                         <td>{{cat.name}}</td>
                         <td>{{cat.description}}</td>
-                        <td><a [routerLink]="['/update-category', cat.id]" class="btn btn-warning"><i class="ri-edit-fill"></i></a></td>
-                        <td><a (click)="deleteCategory(cat)" class="btn btn-danger"><i class="ri-delete-bin-fill"></i></a></td> 
+                        <td class="d-flex">
+                            <a [routerLink]="['/update-category', cat.id]" class="btn btn-warning btn-sm"><i class="ri-edit-fill"></i></a>
+                            <a (click)="deleteCategory(cat)" class="btn btn-danger btn-sm ml-3"><i class="ri-delete-bin-fill"></i></a>
+                        </td> 
                     </tr>
                 </tbody>
             </table>

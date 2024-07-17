@@ -4,29 +4,29 @@
         <h2>Ajouter une leçon</h2>
     </div>
 
-    <form>
+    <form (ngSubmit)="addLesson()">
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="lessonTitle">Titre de la leçon</label>
-                <input type="text" [(ngModel)]="newLesson.title" name="lessonTitle" class="form-control">
+                <input type="text" [(ngModel)]="newLesson.title" name="lessonTitle" class="form-control" id="lessonTitle">
             </div>
             <div class="col-md-6">
                 <label for="lessonDuration">Durée de la leçon</label>
-                <input type="number" [(ngModel)]="newLesson.duration" name="lessonDuration" class="form-control">
+                <input type="number" [(ngModel)]="newLesson.duration" name="lessonDuration" class="form-control" id="lessonDuration">
             </div>
         </div>
 
         <div class="mb-3">
             <label for="lessonDescription">Description de leçon</label>
-            <textarea type="text" [(ngModel)]="newLesson.description" name="lessonDescription" class="form-control"></textarea>
+            <textarea [(ngModel)]="newLesson.description" name="lessonDescription" class="form-control" id="lessonDescription"></textarea>
         </div>
         <div class="mb-3" id="content">
-            <label for="title">Contenu de la leçon</label>
-            <input type="text" [(ngModel)]="newLesson.content" name="lessonContent" class="form-control">
+            <label for="lessonContent">Contenu de la leçon</label>
+            <editor apiKey="oke9lgit5zf2gdmnei5fum83ev0mpu3cxt4c6xukhp7zurp8" [init]="editorConfig" [(ngModel)]="newLesson.content" name="lessonContent" id="lessonContent"></editor>
         </div>
 
         <div class="text-center">
-            <button class="btn btn-success" type="submit" (click)="addLesson()">
+            <button class="btn btn-success" type="submit">
                 Ajouter
             </button>
         </div>

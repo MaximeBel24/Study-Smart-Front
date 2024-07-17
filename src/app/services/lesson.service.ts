@@ -29,6 +29,10 @@ export class LessonService {
     return this.http.get<Lesson>(this.apiURL+`/getbyid/${id}`);
   }
 
+  consultLessonByModuleId(id : number) : Observable<Lesson> {
+    return this.http.get<Lesson>(this.apiURL+`/getbymoduleid/${id}`)
+  }
+
   consultLessonsByModuleId(id : number) : Observable<Lesson[]> {
     return this.http.get<Lesson[]>(this.apiURL+`/getbymodule/${id}`)
   }

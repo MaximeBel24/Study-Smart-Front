@@ -6,7 +6,6 @@ import { LessonService } from '../../../services/lesson.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from '../../../model/course.model';
 import { CourseService } from '../../../services/course.service';
-import Quill from 'quill';
 
 @Component({
   selector: 'app-add-lesson',
@@ -15,7 +14,12 @@ import Quill from 'quill';
 })
 export class AddLessonComponent implements OnInit{
 
-  newLesson : Lesson = new Lesson();
+  newLesson: any = {
+    title: '',
+    duration: '',
+    description: '',
+    content: ''
+  };
 
   currentModule = new Module();
   currentCourse = new Course();
@@ -23,14 +27,16 @@ export class AddLessonComponent implements OnInit{
   currentModuleId!: number;
   currentCourseId!: number;
 
-  // quill = new Quill('#content',{
-  //   debug: 'info',
-  //   modules: {
-  //     toolbar : true,
-  //   },
-  //   placeholder: 'Compose an epic ...',
-  //   theme: 'snow'
-  // })
+  editorConfig = {
+    base_url: '/tinymce',
+    suffix: '.min',
+    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code',
+    plugins: 'lists link image table wordount',
+    height: 900,
+    content_langs: [
+      { title: 'French', code: 'fr' }
+    ]
+  }
 
   constructor(
     private moduleService : ModuleService,
@@ -58,6 +64,7 @@ export class AddLessonComponent implements OnInit{
   }
 
   addLesson() {
+
     this.newLesson.module = this.currentModule;
     this.lessonService.addLesson(this.newLesson).subscribe(() =>{
       this.moduleService.updateModuleDuration(this.currentModuleId).subscribe(() => {

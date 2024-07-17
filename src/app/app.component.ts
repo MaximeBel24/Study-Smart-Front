@@ -9,7 +9,8 @@ import { ModalService } from './services/modal.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  title = 'study-smart';
+
+  title = 'Study-Smart';
 
   constructor(
     private modalService: ModalService,

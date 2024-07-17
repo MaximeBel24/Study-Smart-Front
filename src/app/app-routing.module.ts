@@ -16,6 +16,7 @@ import { UpdateCategoryComponent } from './components/category/update-category/u
 import { ViewCourseComponent } from './components/course/view-course/view-course.component';
 import { AddModuleComponent } from './components/module/add-module/add-module.component';
 import { AddLessonComponent } from './components/lesson/add-lesson/add-lesson.component';
+import { ViewLessonComponent } from './components/lesson/view-lesson/view-lesson.component';
 
 const routes: Routes = [
   { path: 'courses', component: CoursesComponent },
@@ -27,10 +28,11 @@ const routes: Routes = [
   { path: 'update-course/:id', component: UpdateProduitComponent },
   { path: 'list-categories', component: ListCategoriesComponent },
   { path: 'add-category', component: AddCategoryComponent },
-  { path: 'consult-course/:id', component: ViewCourseComponent },
+  { path: 'view-course/:id', component: ViewCourseComponent },
   { path: 'update-category/:id', component: UpdateCategoryComponent },
   { path: 'add-module/:id', component: AddModuleComponent},
   { path: 'add-lesson/:courseId/:moduleId', component: AddLessonComponent },
+  { path: 'view-lesson/:lessonId', component: ViewLessonComponent},
   { path: 'rechercherParNom', component: SearchByNameComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

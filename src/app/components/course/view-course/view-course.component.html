@@ -4,8 +4,8 @@
         <h2 class="text-center mt-4">
             {{ currentCourse.title }}
         </h2>
-        <div class="card-body text-center">
-            <p class="card-text">
+        <div class="card-body text-center px-5">
+            <p class="card-text mx-5">
                 {{ currentCourse.description }}
             </p>
             <p class="card-text">
@@ -45,9 +45,15 @@
                                 <h6>Leçon {{ il + 1 }} : {{ lesson.title }}</h6>
                                 <p>Durée : {{ lesson.duration | duration }}</p>
                             </div>
-                            <a href="" class="btn btn-sm btn-danger" (click)="deleteLesson(module.id, lesson.id)">
-                              <i class="ri-delete-bin-fill"></i>
-                            </a>
+                            <div>
+                                <a href="" class="btn btn-sm btn-danger" (click)="deleteLesson(module.id, lesson.id)">
+                                <i class="ri-delete-bin-fill"></i>
+                                </a>
+                                <a class="btn btn-info text-white btn-sm" [routerLink]="['/view-lesson', lesson.id ]">
+                                    <i class="ri-file-search-fill"></i>
+                                </a>
+                            </div>
+                            
                         </div>
                     </li>
                 </ul>
