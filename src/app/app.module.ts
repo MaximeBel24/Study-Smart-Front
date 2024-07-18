@@ -32,6 +32,8 @@ import { ViewLessonComponent } from './components/lesson/view-lesson/view-lesson
 import { UpdateLessonComponent } from './components/lesson/update-lesson/update-lesson.component';
 import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 import { DurationPipe } from './pipe/duration.pipe';
+import { RemoveHtmlPipe } from './pipe/remove-html.pipe';
+import { SafeHtmlPipe } from './pipe/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,9 @@ import { DurationPipe } from './pipe/duration.pipe';
 
     // Pipe
     SearchFilterPipe,
+    DurationPipe,
+    RemoveHtmlPipe,
+
     HomeComponent,
     ViewCourseComponent,
     AddCategoryComponent,
@@ -67,7 +72,7 @@ import { DurationPipe } from './pipe/duration.pipe';
     AddLessonComponent,
     ViewLessonComponent,
     UpdateLessonComponent,
-    DurationPipe,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -78,12 +83,12 @@ import { DurationPipe } from './pipe/duration.pipe';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    EditorModule
+    EditorModule,
     // Ng2SearchPipeModule
   ],
   providers: [
     provideClientHydration(),
-    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js'}
+    { provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' },
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: TokenInterceptor,

@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'update-category/:id', component: UpdateCategoryComponent },
   { path: 'add-module/:id', component: AddModuleComponent},
   { path: 'add-lesson/:courseId/:moduleId', component: AddLessonComponent },
-  { path: 'view-lesson/:lessonId', component: ViewLessonComponent},
+  { path: 'view-lesson/:courseId/:moduleId/:lessonId', component: ViewLessonComponent},
   { path: 'rechercherParNom', component: SearchByNameComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

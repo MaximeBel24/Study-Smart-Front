@@ -29,12 +29,8 @@ export class LessonService {
     return this.http.get<Lesson>(this.apiURL+`/getbyid/${id}`);
   }
 
-  consultLessonByModuleId(id : number) : Observable<Lesson> {
-    return this.http.get<Lesson>(this.apiURL+`/getbymoduleid/${id}`)
-  }
-
   consultLessonsByModuleId(id : number) : Observable<Lesson[]> {
-    return this.http.get<Lesson[]>(this.apiURL+`/getbymodule/${id}`)
+    return this.http.get<Lesson[]>(this.apiURL+`/getbymoduleid/${id}`)
   }
 
   updateLesson(lesson : Lesson) : Observable<Lesson>{
@@ -43,5 +39,9 @@ export class LessonService {
 
   deleteLesson(id : number){
     return this.http.delete(this.apiURL+`/delete/${id}`);
+  }
+
+  consultLessonByIdAndModuleIdAndCourseId(courseId : number, moduleId : number, lessonId : number) : Observable<Lesson> {
+    return this.http.get<Lesson>(this.apiURL+`/getByIdAndModuleIdAndCourseId/${courseId}/${moduleId}/${lessonId}`);
   }
 }

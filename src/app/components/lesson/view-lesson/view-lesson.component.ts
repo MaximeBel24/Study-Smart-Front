@@ -15,19 +15,36 @@ import { CourseService } from '../../../services/course.service';
 export class ViewLessonComponent implements OnInit{
 
   currentLesson = new Lesson();
+  currentModule = new Module();
+  currentCourse = new Course();
 
   currentLessonId!: number;
 
   constructor(
     private lessonService : LessonService,
+    private moduleService : ModuleService,
+    private courseService : CourseService,
     private activatedRoute : ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    
-    this.lessonService.consultLesson(this.activatedRoute.snapshot.params['id']).subscribe(lssn => {
-      this.currentLesson = lssn
-    })
+    // const courseId = +this.activatedRoute.snapshot.params['courseId'];
+    // const moduleId = +this.activatedRoute.snapshot.params['moduleId'];
+    const lessonId = +this.activatedRoute.snapshot.params['lessonId'];
+
+    // this.lessonService.consultLessonByIdAndModuleIdAndCourseId(courseId, moduleId, lessonId).subscribe(
+    //   lesson => {
+    //     this.currentLesson = lesson;
+    //     console.log('Lesson loaded:', this.currentLesson);
+    //   },
+    //   error => {
+    //     console.error('Error loading lesson:', error);
+    //   }
+    // );
+
+    this.lessonService.consultLesson(lessonId).subscribe(
+      lesson => { this.currentLesson = lesson }
+    )
   }
 
 }

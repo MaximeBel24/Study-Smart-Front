@@ -69,7 +69,7 @@ export class AddLessonComponent implements OnInit{
     this.lessonService.addLesson(this.newLesson).subscribe(() =>{
       this.moduleService.updateModuleDuration(this.currentModuleId).subscribe(() => {
         this.courseService.updateCourseDuration(this.currentCourseId).subscribe(() =>{
-          this.router.navigate(['/consult-course', this.currentCourse.id])
+          this.router.navigate(['/view-course', this.currentCourse.id])
         })
       })
     })

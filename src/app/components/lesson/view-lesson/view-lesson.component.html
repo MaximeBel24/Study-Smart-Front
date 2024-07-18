@@ -1,4 +1,7 @@
 <h2 class="text-center">
     {{ currentLesson.title }}
 </h2>
+<p>
+    {{ currentLesson.content | removeHtml }}
+</p>
 

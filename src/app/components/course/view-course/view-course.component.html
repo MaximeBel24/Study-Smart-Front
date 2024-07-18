@@ -49,7 +49,7 @@
                                 <a href="" class="btn btn-sm btn-danger" (click)="deleteLesson(module.id, lesson.id)">
                                 <i class="ri-delete-bin-fill"></i>
                                 </a>
-                                <a class="btn btn-info text-white btn-sm" [routerLink]="['/view-lesson', lesson.id ]">
+                                <a class="btn btn-info text-white btn-sm" [routerLink]="['/view-lesson', currentCourse.id, module.id ,lesson.id ]">
                                     <i class="ri-file-search-fill"></i>
                                 </a>
                             </div>
