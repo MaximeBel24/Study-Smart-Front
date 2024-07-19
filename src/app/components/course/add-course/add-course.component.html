@@ -3,10 +3,6 @@
         <h2>Ajouter un Cours</h2>
     </div>
     <form>
-        <!-- <div class="mb-3">
-            <label for="courseId" class="form-label">ID du Cours</label>
-            <input type="text" [(ngModel)]="newCourse.id" name="id" id="courseId" class="form-control">
-        </div> -->
 
         <div class="row mb-3">
             <div class="col-md-6">
@@ -38,20 +34,17 @@
             </div>
         </div>
 
-        <!-- Uncomment if needed
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="courseImage" class="form-label">Image du Cours</label>
                 <input type="file" [(ngModel)]="newCourse.image" name="image" id="courseImage" class="form-control" (change)="onImageUpload($event)">
             </div>
         </div>
-        -->
 
-        <!-- Uncomment if needed
         <div class="mb-3">
             <img [src]="imagePath" class="card-img-top img-fluid rounded" style="max-width: 100%; height: auto;">
         </div>
-        -->
+        
 
         <div class="mb-3">
             <label for="courseDescription" class="form-label">Description du Cours</label>

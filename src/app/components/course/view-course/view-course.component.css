@@ -3,7 +3,7 @@ a{
 }
 
 .container{
-    min-height: 360px;
+  padding-top: 130px;
 }
 
 /*=============== BUTTON ===============*/

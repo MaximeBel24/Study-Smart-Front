@@ -21,10 +21,11 @@
                         <td>{{course.title}}</td>
                         <td>{{course.description}}</td>
                         <td>
-                            <img [src]="apiurl + '/image/loadfromFS/' + course.id" 
+                            <img [src]="apiurl + '/loadfromFS/' + course.id" 
                                  alt="Course Image" 
                                  class="img-thumbnail" 
                                  style="height: 50px; width: 100px">
+                                
                         </td>
                         <td>{{course.price}} €</td>
                         <td>{{course.duration}}h</td>

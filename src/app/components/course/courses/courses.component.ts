@@ -12,7 +12,7 @@ import { Image } from '../../../model/image.model';
 export class CoursesComponent implements OnInit {
   courses?: Course[]; // un tableau de cours
 
-  apiurl: string = 'http://localhost:8080/courses/api';
+  apiurl: string = 'http://localhost:8080/smart_study/image';
 
   constructor(
     private courseService: CourseService,

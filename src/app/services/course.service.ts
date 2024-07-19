@@ -18,6 +18,7 @@ export class CourseService {
 
   apiURL: string = environment.STUDY_SMART_API_URL+"/course";
   apiURLCat: string = environment.STUDY_SMART_API_URL+"/category";
+  apiURLImage: string = environment.STUDY_SMART_API_URL+"/image";
 
   courses! : Course[];
 
@@ -103,31 +104,31 @@ export class CourseService {
   uploadImage(file: File, filename: string): Observable<Image>{
     const imageFormData = new FormData();
     imageFormData.append('image', file, filename);
-    const url = `${this.apiURL + '/image/upload'}`
+    const url = `${this.apiURLImage + '/upload'}`
     return this.http.post<Image>(url, imageFormData);
   }
 
   loadImage(id: number): Observable<Image> {
-    const url = `${this.apiURL + '/image/get/info'}/${id}`;
+    const url = `${this.apiURLImage + '/load'}/${id}`;
     return this.http.get<Image>(url);
   }
 
   uploadImageCourse(file: File, filename: string, idCourse: number): Observable<any>{
     const imageFormData = new FormData();
     imageFormData.append('image', file, filename);
-    const url = `${this.apiURL + '/image/uploadImageCourse'}/${idCourse}`;
+    const url = `${this.apiURLImage + '/uploadImageCourse'}/${idCourse}`;
     return this.http.post(url, imageFormData);
   }
 
   deleteImage(id: number) {
-    const url = `${this.apiURL}/image/delete/${id}`;
+    const url = `${this.apiURLImage}/delete/${id}`;
     return this.http.delete(url, httpOptions);
   }
 
   uploadImageFS(file: File, filename: string, idCourse: number): Observable<any>{
     const imageFormData = new FormData();
     imageFormData.append('image', file, filename);
-    const url = `${this.apiURL + '/image/uploadFS'}/${idCourse}`;
+    const url = `${this.apiURLImage + '/uploadFS'}/${idCourse}`;
     return this.http.post(url, imageFormData);
   }
 }

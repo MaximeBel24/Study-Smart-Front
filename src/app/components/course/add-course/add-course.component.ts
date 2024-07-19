@@ -13,6 +13,7 @@ import { CategoryService } from '../../../services/category.service';
   styleUrl: './add-course.component.css',
 })
 export class AddCourseComponent implements OnInit {
+
   newCourse: Course = new Course();
   categories!: Category[];
 
@@ -39,20 +40,20 @@ export class AddCourseComponent implements OnInit {
       (cat) => cat.id == this.newIdCat
     )!;
     this.courseService.addCourse(this.newCourse).subscribe((course) => {
-      // this.courseService
-      //   .uploadImageFS(this.uploadedImage, this.uploadedImage.name, course.id)
-      //   .subscribe((response: any) => {});
+      this.courseService
+        .uploadImageFS(this.uploadedImage, this.uploadedImage.name, course.id)
+        .subscribe((response: any) => {});
 
       this.router.navigate(['courses']);
     });
   }
 
-  // onImageUpload(event: any) {
-  //   this.uploadedImage = event.target.files[0];
-  //   var reader = new FileReader();
-  //   reader.readAsDataURL(this.uploadedImage);
-  //   reader.onload = (_event) => {
-  //     this.imagePath = reader.result;
-  //   };
-  // }
+  onImageUpload(event: any) {
+    this.uploadedImage = event.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(this.uploadedImage);
+    reader.onload = (_event) => {
+      this.imagePath = reader.result;
+    };
+  }
 }
